@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bảng Điều Khiển - Tổng Quan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#271901",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#303032",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#271901",
+                        "inverse-primary": "#bec6e0",
+                        "on-surface": "#1b1b1d",
+                        "surface-bright": "#fcf8fa",
+                        "primary": "#000000",
+                        "outline": "#76777d",
+                        "secondary": "#505f76",
+                        "secondary-container": "#d0e1fb",
+                        "background": "#fcf8fa",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-primary-container": "#7c839b",
+                        "primary-container": "#131b2e",
+                        "surface-variant": "#e4e2e4",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-tint": "#565e74",
+                        "surface-dim": "#dcd9db",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container-low": "#f6f3f5",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-background": "#1b1b1d",
+                        "on-secondary-container": "#54647a",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f0edef",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface": "#fcf8fa",
+                        "on-tertiary-container": "#98805d",
+                        "tertiary-fixed": "#fcdeb5",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae7e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "base-unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-base": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "h3": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-base": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "data-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h1": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Admin Profile Popup */
+        #adminProfilePopup {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            width: 280px;
+            background: white;
+            border: 1px solid #c6c6cd;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            z-index: 100;
+            overflow: hidden;
+            animation: fadeInDown 0.2s ease;
+        }
+        #adminProfilePopup.show {
+            display: block;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-base antialiased min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-[260px] bg-[#0F172A] dark:bg-slate-950 text-white font-['Inter'] text-sm font-medium border-r border-slate-800 shadow-xl z-50">
+<div class="flex flex-col h-full py-8">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded-DEFAULT bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-xl">storefront</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-white tracking-wider leading-none">Admin Suite</h1>
+<span class="text-xs text-slate-400 mt-1 block">v2.4.0</span>
+</div>
+</div>
+<nav class="flex-1 space-y-1 font-['Inter'] text-sm font-medium">
+<!-- Bảng điều khiển (Đang chọn) -->
+<a class="flex items-center gap-3 px-6 py-3 text-white border-l-4 border-slate-50 bg-slate-800/40 active:scale-[0.98] transition-transform" href="admin-dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+    Bảng Điều Khiển
+</a>
+<!-- Nhân viên (Admin only) -->
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="staff-management.html" data-role="admin-only">
+<span class="material-symbols-outlined">badge</span>
+    Nhân Viên
+</a>
+<!-- Khách hàng -->
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="customer-management.html">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+    Khách Hàng
+</a>
+<!-- Đơn hàng -->
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="order-management.html">
+<span class="material-symbols-outlined">shopping_cart</span>
+    Đơn Hàng
+</a>
+<!-- Thanh toán -->
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="payment-management.html">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+    Thanh Toán
+</a>
+<!-- Hỗ trợ -->
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="customer-care.html">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+    Hỗ Trợ
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT bg-slate-800/30 text-slate-300">
+<span class="material-symbols-outlined text-sm">info</span>
+<span class="text-xs">Trạng thái hệ thống: Hoạt động tốt</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="sticky top-0 z-40 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm text-[#0F172A] dark:text-slate-100 font-['Inter'] text-sm tracking-tight">
+<div class="flex items-center justify-between px-8 h-16 ml-[260px]">
+<!-- Search Bar (on_left) -->
+<div class="flex items-center gap-4 flex-1">
+<span class="hidden md:block text-xl font-bold text-slate-900 dark:text-white">Bảng Điều Khiển</span>
+<div class="hidden md:flex items-center ml-8 px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-DEFAULT border border-slate-200 dark:border-slate-700 focus-within:border-primary w-96 transition-colors">
+<span class="material-symbols-outlined text-slate-400 mr-2 text-lg">search</span>
+<input class="bg-transparent border-none outline-none focus:ring-0 text-sm w-full placeholder-slate-400 text-[#0F172A] dark:text-slate-100" placeholder="Tìm kiếm..." type="text"/>
+</div>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<!-- Nút chuyển sang trang chính (thay thế nút thông báo) -->
+<a href="index.html" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70 relative" title="Trang chủ">
+<span class="material-symbols-outlined">home</span>
+</a>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<!-- Admin Profile Button with Popup -->
+<div class="relative" id="adminProfileContainer">
+<button class="flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70 p-1.5 pr-3" id="adminProfileBtn">
+<img src="" class="auth-user-avatar-img hidden w-8 h-8 rounded-full object-cover border border-slate-200" />
+<span class="auth-user-avatar-text hidden w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm"></span>
+<span class="font-medium auth-user-name">Quản trị viên</span>
+<span class="material-symbols-outlined text-sm text-slate-400">expand_more</span>
+</button>
+<!-- Admin Profile Popup -->
+<div id="adminProfilePopup">
+<div class="p-5 bg-gradient-to-br from-slate-50 to-white border-b border-slate-100">
+    <div class="flex items-center gap-3 mb-3">
+        <img src="" class="auth-user-avatar-img hidden w-12 h-12 rounded-full object-cover border-2 border-slate-200" />
+        <span class="auth-user-avatar-text hidden w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg"></span>
+        <div>
+            <p class="font-semibold text-sm text-slate-900 auth-user-name">Quản trị viên</p>
+            <p class="text-xs text-slate-500 auth-user-email">admin@commercesuite.com</p>
+        </div>
+    </div>
+    <div class="text-xs text-slate-500 space-y-1">
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">badge</span> Vai trò: <span class="auth-user-role">Quản trị viên</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">calendar_today</span> Tham gia: 01/01/2024</div>
+    </div>
+</div>
+<div class="p-2">
+    <a href="login.html" class="flex items-center gap-3 px-3 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors w-full" id="logoutBtn">
+        <span class="material-symbols-outlined text-lg">logout</span>
+        Đăng xuất
+    </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-[260px] p-container-padding">
+<div class="mb-stack-lg flex items-end justify-between">
+<div>
+<h2 class="font-h1 text-h1 text-on-surface mb-1">Tổng quan hệ thống</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dữ liệu được cập nhật theo thời gian thực.</p>
+</div>
+</div>
+<!-- Statistics Overview -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-lg">
+<!-- Card 1: Monthly Revenue -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 shadow-sm hover:bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between mb-stack-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Doanh Thu Trong Tháng</span>
+<span class="material-symbols-outlined text-secondary text-xl">account_balance_wallet</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-h2 text-h2 text-on-surface" id="stat-revenue">0 ₫</span>
+</div>
+<div class="mt-2 flex items-center gap-1" id="stat-revenue-growth-container">
+<span class="material-symbols-outlined text-sm" id="stat-revenue-icon" style="font-variation-settings: 'wght' 700;">remove</span>
+<span class="font-label-sm text-label-sm" id="stat-revenue-growth">Đang tính...</span>
+</div>
+</div>
+<!-- Card 2: New Customers -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 shadow-sm hover:bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between mb-stack-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Khách Hàng Mới</span>
+<span class="material-symbols-outlined text-secondary text-xl">group</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-h2 text-h2 text-on-surface" id="stat-customers">0</span>
+</div>
+<div class="mt-2 flex items-center gap-1" id="stat-customers-growth-container">
+<span class="material-symbols-outlined text-sm" id="stat-customers-icon" style="font-variation-settings: 'wght' 700;">remove</span>
+<span class="font-label-sm text-label-sm" id="stat-customers-growth">Đang tính...</span>
+</div>
+</div>
+<!-- Card 3: New Orders -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 shadow-sm hover:bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between mb-stack-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Đơn Hàng Mới</span>
+<span class="material-symbols-outlined text-secondary text-xl">shopping_cart</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-h2 text-h2 text-on-surface" id="stat-orders">0</span>
+</div>
+<div class="mt-2 flex items-center gap-1" id="stat-orders-growth-container">
+<span class="material-symbols-outlined text-sm" id="stat-orders-icon" style="font-variation-settings: 'wght' 700;">remove</span>
+<span class="font-label-sm text-label-sm" id="stat-orders-growth">Đang tính...</span>
+</div>
+</div>
+<!-- Card 4: Support Tickets -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 shadow-sm hover:bg-surface-container-low transition-colors">
+<div class="flex items-center justify-between mb-stack-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Yêu Cầu Hỗ Trợ Mở</span>
+<span class="material-symbols-outlined text-secondary text-xl">support</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-h2 text-h2 text-on-surface" id="stat-tickets">0</span>
+</div>
+<div class="mt-2 flex items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'wght' 700;">info</span>
+<span class="font-label-sm text-label-sm">Cần được xử lý</span>
+</div>
+</div>
+</div>
+
+<!-- Chart Section -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden mb-stack-lg p-6">
+    <div class="mb-4 flex items-center justify-between">
+        <h3 class="font-h3 text-h3 text-on-surface" id="chartTitle">Biểu đồ doanh thu</h3>
+        <select id="chartFilter" class="px-3 py-1.5 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+            <option value="7_days" selected>7 ngày qua</option>
+            <option value="1_month">1 tháng qua</option>
+            <option value="1_year">1 năm qua</option>
+        </select>
+    </div>
+    <div class="relative h-[300px] w-full">
+        <canvas id="revenueChart"></canvas>
+    </div>
+</div>
+
+<!-- Recent High-Value Customers Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="px-6 py-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<div>
+<h3 class="font-h3 text-h3 text-on-surface">Khách Hàng Giá Trị Cao Gần Đây</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Danh sách top khách hàng có giao dịch lớn nhất trong 30 ngày qua.</p>
+</div>
+<a href="customer-management.html" class="font-label-md text-label-md text-secondary hover:text-primary transition-colors flex items-center gap-1">
+                    Xem tất cả
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Khách Hàng</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap text-right">Tổng Chi Tiêu</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Ngày Mua Cuối</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Trạng Thái</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap text-right">Thao Tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant" id="topCustomersBody">
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/auth_guard.js"></script>
+<script src="js/dashboard.js?v=3"></script>
+<script>
+    // Admin Profile Popup Toggle
+    document.getElementById('adminProfileBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        document.getElementById('adminProfilePopup').classList.toggle('show');
+    });
+    document.addEventListener('click', function(e) {
+        const popup = document.getElementById('adminProfilePopup');
+        const container = document.getElementById('adminProfileContainer');
+        if (popup && container && !container.contains(e.target)) {
+            popup.classList.remove('show');
+        }
+    });
+    // Logout handler
+    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (confirm('Bạn có chắc muốn đăng xuất?')) {
+            // Call logout API
+            fetch('../../api/auth/logout.php', { method: 'POST' })
+                .then(() => { window.location.href = 'login.html'; })
+                .catch(() => { window.location.href = 'login.html'; });
+        }
+    });
+</script>
+</body></html>

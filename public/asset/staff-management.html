@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quản Lý Nhân Viên - Admin Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors":{"error":"#ba1a1a","on-tertiary-fixed":"#271901","on-error-container":"#93000a","on-primary":"#ffffff","primary-fixed-dim":"#bec6e0","on-primary-fixed-variant":"#3f465c","inverse-surface":"#303032","outline-variant":"#c6c6cd","secondary-fixed":"#d3e4fe","on-tertiary":"#ffffff","tertiary-container":"#271901","inverse-primary":"#bec6e0","on-surface":"#1b1b1d","surface-bright":"#fcf8fa","primary":"#000000","outline":"#76777d","secondary":"#505f76","secondary-container":"#d0e1fb","background":"#fcf8fa","inverse-on-surface":"#f3f0f2","on-primary-container":"#7c839b","primary-container":"#131b2e","surface-variant":"#e4e2e4","on-secondary-fixed-variant":"#38485d","tertiary-fixed-dim":"#dec29a","on-primary-fixed":"#131b2e","surface-container-lowest":"#ffffff","error-container":"#ffdad6","on-surface-variant":"#45464d","on-tertiary-fixed-variant":"#574425","surface-tint":"#565e74","surface-dim":"#dcd9db","primary-fixed":"#dae2fd","surface-container-low":"#f6f3f5","surface-container-highest":"#e4e2e4","on-background":"#1b1b1d","on-secondary-container":"#54647a","on-error":"#ffffff","surface-container":"#f0edef","secondary-fixed-dim":"#b7c8e1","on-secondary-fixed":"#0b1c30","surface":"#fcf8fa","on-tertiary-container":"#98805d","tertiary-fixed":"#fcdeb5","tertiary":"#000000","on-secondary":"#ffffff","surface-container-high":"#eae7e9"},
+                "borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+                "spacing":{"stack-sm":"8px","stack-lg":"32px","stack-md":"16px","base-unit":"4px","gutter":"16px","container-padding":"24px"},
+                "fontFamily":{"h2":["Inter"],"label-md":["Inter"],"body-base":["Inter"],"data-mono":["Inter"],"h3":["Inter"],"h1":["Inter"],"body-sm":["Inter"],"label-sm":["Inter"]},
+                "fontSize":{"h2":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"body-base":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"data-mono":["14px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"500"}],"h3":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"h1":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}]}
+            }
+        }
+    }
+</script>
+<style>
+    #adminProfilePopup { display:none;position:absolute;top:100%;right:0;margin-top:8px;width:280px;background:white;border:1px solid #c6c6cd;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.12);z-index:100;overflow:hidden;animation:fadeInDown 0.2s ease; }
+    #adminProfilePopup.show { display:block; }
+    @keyframes fadeInDown { from{opacity:0;transform:translateY(-8px);} to{opacity:1;transform:translateY(0);} }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-base antialiased min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-[260px] bg-[#0F172A] text-white font-['Inter'] text-sm font-medium border-r border-slate-800 shadow-xl z-50">
+<div class="flex flex-col h-full py-8">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded-DEFAULT bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-xl">storefront</span></div>
+<div><h1 class="text-lg font-black text-white tracking-wider leading-none">Admin Suite</h1><span class="text-xs text-slate-400 mt-1 block">v2.4.0</span></div>
+</div>
+<nav class="flex-1 space-y-1 font-['Inter'] text-sm font-medium">
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200" href="admin-dashboard.html"><span class="material-symbols-outlined">dashboard</span> Bảng Điều Khiển</a>
+<a class="flex items-center gap-3 px-6 py-3 text-white border-l-4 border-slate-50 bg-slate-800/40" href="staff-management.html" data-role="admin-only"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">badge</span> Nhân Viên</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200" href="customer-management.html"><span class="material-symbols-outlined">group</span> Khách Hàng</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200" href="order-management.html"><span class="material-symbols-outlined">shopping_cart</span> Đơn Hàng</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200" href="payment-management.html"><span class="material-symbols-outlined">payments</span> Thanh Toán</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200" href="customer-care.html"><span class="material-symbols-outlined">support_agent</span> Hỗ Trợ</a>
+</nav>
+<div class="px-6 mt-auto"><div class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT bg-slate-800/30 text-slate-300"><span class="material-symbols-outlined text-sm">info</span><span class="text-xs">Trạng thái hệ thống: Hoạt động tốt</span></div></div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="ml-[260px] flex flex-col min-h-screen w-[calc(100%-260px)]">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-40 w-full bg-white border-b border-slate-200 shadow-sm flex items-center justify-between px-8 h-16">
+<div class="flex items-center gap-4"><span class="text-xl font-bold text-slate-900">Quản Lý Nhân Viên</span></div>
+<div class="flex items-center gap-6">
+<a href="index.html" class="text-slate-500 hover:bg-slate-50 rounded-md p-2 transition-colors" title="Trang chủ"><span class="material-symbols-outlined">home</span></a>
+<div class="h-6 w-px bg-slate-200"></div>
+<div class="relative" id="adminProfileContainer">
+<button class="flex items-center gap-3 hover:bg-slate-50 rounded-md p-1.5 pr-3" id="adminProfileBtn">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<span class="font-label-sm text-label-sm text-on-primary-container auth-user-avatar-text">QT</span>
+<img src="" class="auth-user-avatar-img hidden w-full h-full object-cover" />
+</div>
+<span class="font-label-md text-label-md auth-user-name">Quản trị viên</span>
+</button>
+<div id="adminProfilePopup">
+<div class="p-5 bg-gradient-to-br from-slate-50 to-white border-b border-slate-100">
+    <div class="flex items-center gap-3 mb-3">
+        <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center border-2 border-slate-200 overflow-hidden"><span class="font-label-md text-label-md text-on-primary-container auth-user-avatar-text">QT</span><img src="" class="auth-user-avatar-img hidden w-full h-full object-cover" /></div>
+        <div><p class="font-semibold text-sm text-slate-900 auth-user-name">Quản trị viên</p><p class="text-xs text-slate-500 auth-user-email">admin@commercesuite.com</p></div>
+    </div>
+</div>
+<div class="p-2">
+    <a href="login.html" class="flex items-center gap-3 px-3 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors w-full" id="logoutBtn"><span class="material-symbols-outlined text-lg">logout</span> Đăng xuất</a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-container-padding">
+<div class="flex flex-col gap-stack-sm mb-stack-lg">
+<h2 class="font-h2 text-h2 text-on-surface">Quản Lý Nhân Viên</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Thêm, chỉnh sửa và quản lý tài khoản nhân viên. <span id="staffCount" class="font-label-md text-label-md text-secondary"></span></p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg flex flex-col shadow-sm">
+<!-- Toolbar -->
+<div class="p-4 border-b border-surface-dim flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-bright rounded-t-lg">
+<div class="relative w-full sm:w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full pl-9 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Tìm kiếm nhân viên..." type="text" id="staffSearch"/>
+</div>
+<button id="addStaffBtn" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary text-on-primary font-label-md text-label-md px-5 py-2.5 rounded-DEFAULT hover:bg-inverse-surface transition-colors">
+<span class="material-symbols-outlined text-sm">add</span> Thêm Nhân Viên
+</button>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant">ID</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant">Họ Tên</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant">Email</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant">Điện Thoại</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant text-center">Số KH Phụ Trách</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant">Trạng Thái</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-on-surface-variant text-center">Thao Tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-dim bg-surface-container-lowest" id="staffTableBody"></tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+<!-- Add Modal -->
+<div id="addModal" class="hidden fixed inset-0 z-[9999] flex items-center justify-center bg-black/40">
+<div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-md mx-4 border border-outline-variant">
+<div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant"><h3 class="font-h3 text-h3 text-on-surface">Thêm nhân viên mới</h3><button id="addModalClose" class="p-1 text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">close</span></button></div>
+<form id="addForm" class="p-6 space-y-4">
+<div class="flex flex-col gap-1"><label class="font-label-sm text-label-sm text-on-surface">Họ tên <span class="text-error">*</span></label><input id="addName" class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary" required/></div>
+<div class="flex flex-col gap-1"><label class="font-label-sm text-label-sm text-on-surface">Email <span class="text-error">*</span></label><input id="addEmail" type="email" class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary" required/></div>
+<div class="flex flex-col gap-1"><label class="font-label-sm text-label-sm text-on-surface">Mật khẩu <span class="text-error">*</span></label><input id="addPassword" type="password" class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary" required placeholder="Nhập mật khẩu..."/></div>
+<div class="flex flex-col gap-1"><label class="font-label-sm text-label-sm text-on-surface">Số điện thoại</label><input id="addPhone" class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary"/></div>
+<div class="flex flex-col gap-1"><label class="font-label-sm text-label-sm text-on-surface">Địa chỉ</label><input id="addAddress" class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary"/></div>
+<div class="flex justify-end gap-3 pt-2">
+<button type="button" id="addModalCancel" class="px-4 py-2 border border-outline-variant rounded-DEFAULT font-label-md text-label-md hover:bg-surface-container-low transition-colors">Hủy</button>
+<button type="submit" class="px-4 py-2 bg-primary text-on-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary/90 transition-colors">Thêm nhân viên</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Edit Modal -->
+<div id="editModal" class="hidden fixed inset-0 z-[9999] flex items-center justify-center bg-black/40">
+<div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-md mx-4 border border-outline-variant">
+<div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant"><h3 class="font-h3 text-h3 text-on-surface">Chỉnh sửa nhân viên</h3><button id="editModalClose" class="p-1 text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">close</span></button></div>
+<form id="editForm" class="p-6 space-y-4">
+<input type="hidden" id="editId"/>
+<div class="flex flex-col gap-1"><label class="font-label-sm text-label-sm text-on-surface">Họ tên</label><input id="editName" class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary" required/></div>
+<div class="flex flex-col gap-1"><label class="font-label-sm text-label-sm text-on-surface">Email</label><input id="editEmail" type="email" class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary" required/></div>
+<div class="flex flex-col gap-1"><label class="font-label-sm text-label-sm text-on-surface">Số điện thoại</label><input id="editPhone" class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary"/></div>
+<div class="flex flex-col gap-1"><label class="font-label-sm text-label-sm text-on-surface">Địa chỉ</label><input id="editAddress" class="w-full px-3 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary"/></div>
+<div class="flex justify-end gap-3 pt-2">
+<button type="button" id="editModalCancel" class="px-4 py-2 border border-outline-variant rounded-DEFAULT font-label-md text-label-md hover:bg-surface-container-low transition-colors">Hủy</button>
+<button type="submit" class="px-4 py-2 bg-primary text-on-primary rounded-DEFAULT font-label-md text-label-md hover:bg-primary/90 transition-colors">Lưu thay đổi</button>
+</div>
+</form>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/auth_guard.js"></script>
+<script src="js/staff.js"></script>
+<script>
+    document.getElementById('adminProfileBtn').addEventListener('click', function(e) { e.stopPropagation(); document.getElementById('adminProfilePopup').classList.toggle('show'); });
+    document.addEventListener('click', function(e) { const p=document.getElementById('adminProfilePopup'),c=document.getElementById('adminProfileContainer'); if(p&&c&&!c.contains(e.target)) p.classList.remove('show'); });
+    document.getElementById('logoutBtn').addEventListener('click', function(e) { e.preventDefault(); if(confirm('Bạn có chắc muốn đăng xuất?')){ fetch('../../api/auth/logout.php',{method:'POST'}).then(()=>{window.location.href='login.html';}).catch(()=>{window.location.href='login.html';}); } });
+</script>
+</body></html>
