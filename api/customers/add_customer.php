@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Add Customer API - POST
-// Creates a new user with role='USER'
+// API Thêm khách hàng mới - Phương thức POST
+// Tạo một người dùng mới với vai trò là 'USER'
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
@@ -25,14 +25,14 @@ $customer_tier   = trim($_POST['customer_tier'] ?? 'NONE');
 $tags      = trim($_POST['tags'] ?? '');
 $status    = trim($_POST['status'] ?? 'ACTIVE');
 
-// Validate required fields
+// Xác thực các trường dữ liệu bắt buộc
 if (empty($full_name) || empty($email) || empty($password)) {
     echo json_encode(['success' => false, 'message' => 'Vui lòng nhập đầy đủ họ tên, email và mật khẩu.']);
     exit;
 }
 
 try {
-    // Check if email already exists
+    // Kiểm tra xem email đã tồn tại trong hệ thống chưa
     $check = $pdo->prepare("SELECT id FROM users WHERE email = :email LIMIT 1");
     $check->execute([':email' => $email]);
     if ($check->fetch()) {
@@ -40,10 +40,10 @@ try {
         exit;
     }
 
-    // Hash password
+    // Mã hóa mật khẩu (Hash)
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert new customer
+    // Thêm khách hàng mới vào cơ sở dữ liệu
     $stmt = $pdo->prepare("
         INSERT INTO users (
             full_name, email, password, phone, address, role, assigned_staff_id, status, created_at,

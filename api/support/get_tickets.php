@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Get Tickets API - GET
-// Returns main tickets (parent_id IS NULL) + conversation replies
+// API Lấy danh sách yêu cầu hỗ trợ - Phương thức GET
+// Trả về các yêu cầu gốc (parent_id IS NULL) + các phản hồi trong cuộc trò chuyện
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
@@ -11,8 +11,8 @@ $ticketId = isset($_GET['ticket_id']) ? (int) $_GET['ticket_id'] : 0;
 
 try {
     if ($ticketId > 0) {
-        // Get specific ticket + its conversation thread
-        // 1. Get main ticket
+        // Lấy thông tin một yêu cầu cụ thể + toàn bộ chuỗi tin nhắn của nó
+        // 1. Lấy thông tin yêu cầu gốc
         $stmt = $pdo->prepare("
             SELECT t.*, u.full_name, u.email, u.avatar_url
             FROM support_tickets t
@@ -27,7 +27,7 @@ try {
             exit;
         }
 
-        // 2. Get all replies for this ticket
+        // 2. Lấy tất cả các phản hồi (tin nhắn) thuộc về yêu cầu này
         $stmt = $pdo->prepare("
             SELECT t.*, u.full_name, u.email, u.avatar_url
             FROM support_tickets t
@@ -47,7 +47,7 @@ try {
         ]);
 
     } else {
-        // Get all main tickets list
+        // Lấy danh sách tất cả các yêu cầu hỗ trợ gốc (để hiển thị ở sidebar)
         $stmt = $pdo->query("
             SELECT t.*, u.full_name, u.email, u.avatar_url,
                    (SELECT COUNT(*) FROM support_tickets r WHERE r.parent_id = t.id) as reply_count

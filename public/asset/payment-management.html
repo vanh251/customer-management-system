@@ -1,111 +1,118 @@
 <!DOCTYPE html>
 
-<html class="light" lang="vi"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Quản Lý Thanh Toán - Admin Suite</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Quản Lý Thanh Toán - Admin Suite</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
         tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "error": "#ba1a1a",
-                      "on-tertiary-fixed": "#271901",
-                      "on-error-container": "#93000a",
-                      "on-primary": "#ffffff",
-                      "primary-fixed-dim": "#bec6e0",
-                      "on-primary-fixed-variant": "#3f465c",
-                      "inverse-surface": "#303032",
-                      "outline-variant": "#c6c6cd",
-                      "secondary-fixed": "#d3e4fe",
-                      "on-tertiary": "#ffffff",
-                      "tertiary-container": "#271901",
-                      "inverse-primary": "#bec6e0",
-                      "on-surface": "#1b1b1d",
-                      "surface-bright": "#fcf8fa",
-                      "primary": "#000000",
-                      "outline": "#76777d",
-                      "secondary": "#505f76",
-                      "secondary-container": "#d0e1fb",
-                      "background": "#fcf8fa",
-                      "inverse-on-surface": "#f3f0f2",
-                      "on-primary-container": "#7c839b",
-                      "primary-container": "#131b2e",
-                      "surface-variant": "#e4e2e4",
-                      "on-secondary-fixed-variant": "#38485d",
-                      "tertiary-fixed-dim": "#dec29a",
-                      "on-primary-fixed": "#131b2e",
-                      "surface-container-lowest": "#ffffff",
-                      "error-container": "#ffdad6",
-                      "on-surface-variant": "#45464d",
-                      "on-tertiary-fixed-variant": "#574425",
-                      "surface-tint": "#565e74",
-                      "surface-dim": "#dcd9db",
-                      "primary-fixed": "#dae2fd",
-                      "surface-container-low": "#f6f3f5",
-                      "surface-container-highest": "#e4e2e4",
-                      "on-background": "#1b1b1d",
-                      "on-secondary-container": "#54647a",
-                      "on-error": "#ffffff",
-                      "surface-container": "#f0edef",
-                      "secondary-fixed-dim": "#b7c8e1",
-                      "on-secondary-fixed": "#0b1c30",
-                      "surface": "#fcf8fa",
-                      "on-tertiary-container": "#98805d",
-                      "tertiary-fixed": "#fcdeb5",
-                      "tertiary": "#000000",
-                      "on-secondary": "#ffffff",
-                      "surface-container-high": "#eae7e9"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.125rem",
-                      "lg": "0.25rem",
-                      "xl": "0.5rem",
-                      "full": "0.75rem"
-              },
-              "spacing": {
-                      "stack-sm": "8px",
-                      "stack-lg": "32px",
-                      "stack-md": "16px",
-                      "base-unit": "4px",
-                      "gutter": "16px",
-                      "container-padding": "24px"
-              },
-              "fontFamily": {
-                      "h2": ["Inter"],
-                      "label-md": ["Inter"],
-                      "body-base": ["Inter"],
-                      "data-mono": ["Inter"],
-                      "h3": ["Inter"],
-                      "h1": ["Inter"],
-                      "body-sm": ["Inter"],
-                      "label-sm": ["Inter"]
-              },
-              "fontSize": {
-                      "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                      "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
-                      "body-base": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
-                      "data-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
-                      "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                      "h1": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                      "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
-                      "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }]
-              }
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#271901",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#303032",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#271901",
+                        "inverse-primary": "#bec6e0",
+                        "on-surface": "#1b1b1d",
+                        "surface-bright": "#fcf8fa",
+                        "primary": "#000000",
+                        "outline": "#76777d",
+                        "secondary": "#505f76",
+                        "secondary-container": "#d0e1fb",
+                        "background": "#fcf8fa",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-primary-container": "#7c839b",
+                        "primary-container": "#131b2e",
+                        "surface-variant": "#e4e2e4",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-tint": "#565e74",
+                        "surface-dim": "#dcd9db",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container-low": "#f6f3f5",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-background": "#1b1b1d",
+                        "on-secondary-container": "#54647a",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f0edef",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface": "#fcf8fa",
+                        "on-tertiary-container": "#98805d",
+                        "tertiary-fixed": "#fcdeb5",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae7e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "base-unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-base": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "h3": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-base": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "data-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h1": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                }
             }
-          }
         }
     </script>
-<style>
+    <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+
         .icon-fill {
             font-variation-settings: 'FILL' 1;
         }
+
         /* Admin Profile Popup */
         #adminProfilePopup {
             display: none;
@@ -117,227 +124,279 @@
             background: white;
             border: 1px solid #c6c6cd;
             border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
             z-index: 100;
             overflow: hidden;
             animation: fadeInDown 0.2s ease;
         }
-        #adminProfilePopup.show { display: block; }
+
+        #adminProfilePopup.show {
+            display: block;
+        }
+
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
+
 <body class="bg-background text-on-background font-body-base flex h-screen overflow-hidden">
-<!-- SideNavBar -->
-<aside class="fixed left-0 top-0 h-screen w-[260px] bg-[#0F172A] dark:bg-slate-950 text-white font-['Inter'] text-sm font-medium border-r border-slate-800 shadow-xl z-50">
-<div class="flex flex-col h-full py-8">
-<div class="px-6 mb-8 flex items-center gap-3">
-<div class="w-8 h-8 rounded-DEFAULT bg-primary flex items-center justify-center">
-<span class="material-symbols-outlined text-on-primary text-xl">storefront</span>
-</div>
-<div>
-<h1 class="text-lg font-black text-white tracking-wider leading-none">Admin Suite</h1>
-<span class="text-xs text-slate-400 mt-1 block">v2.4.0</span>
-</div>
-</div>
-<nav class="flex-1 space-y-1 font-['Inter'] text-sm font-medium">
-<!-- Bảng điều khiển -->
-<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="admin-dashboard.html">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-    Bảng Điều Khiển
-</a>
-<!-- Nhân viên (Admin only) -->
-<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="staff-management.html" data-role="admin-only">
-<span class="material-symbols-outlined">badge</span>
-    Nhân Viên
-</a>
-<!-- Khách hàng -->
-<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="customer-management.html">
-<span class="material-symbols-outlined" data-icon="group">group</span>
-    Khách Hàng
-</a>
-<!-- Đơn hàng -->
-<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="order-management.html">
-<span class="material-symbols-outlined">shopping_cart</span>
-    Đơn Hàng
-</a>
-<!-- Thanh toán (Đang chọn) -->
-<a class="flex items-center gap-3 px-6 py-3 text-white border-l-4 border-slate-50 bg-slate-800/40 active:scale-[0.98] transition-transform" href="payment-management.html">
-<span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
-    Thanh Toán
-</a>
-<!-- Hỗ trợ -->
-<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="customer-care.html">
-<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
-    Hỗ Trợ
-</a>
-</nav>
-<div class="px-6 mt-auto">
-<div class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT bg-slate-800/30 text-slate-300">
-<span class="material-symbols-outlined text-sm">info</span>
-<span class="text-xs">Trạng thái hệ thống: Hoạt động tốt</span>
-</div>
-</div>
-</div>
-</aside>
-<!-- Main Content Wrapper -->
-<div class="flex-1 ml-[260px] flex flex-col h-screen overflow-hidden relative w-[calc(100%-260px)]">
-<!-- TopNavBar -->
-<header class="sticky top-0 z-40 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between px-8 h-16">
-<div class="flex items-center gap-4">
-<h2 class="hidden md:block text-xl font-bold text-slate-900 dark:text-white">Bảng Điều Khiển</h2>
-<div class="relative ml-4">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm" data-icon="search">search</span>
-<input class="pl-9 pr-4 py-1.5 bg-slate-50 dark:bg-slate-800 border-none rounded-md text-sm focus:ring-1 focus:ring-primary w-64 text-[#0F172A] dark:text-slate-100 placeholder-slate-400" placeholder="Tìm kiếm..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<!-- Nút chuyển sang trang chính -->
-<a href="index.html" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70" title="Trang chủ">
-<span class="material-symbols-outlined" data-icon="home">home</span>
-</a>
-<div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-slate-700">
-    <!-- Admin Profile -->
-    <div class="relative" id="adminProfileContainer">
-    <button class="flex items-center gap-3 cursor-pointer active:opacity-70" id="adminProfileBtn">
-    <img src="" class="auth-user-avatar-img hidden w-8 h-8 rounded-full border border-slate-200 object-cover" />
-    <span class="auth-user-avatar-text hidden w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm"></span>
-    <span class="font-['Inter'] text-sm tracking-tight text-slate-900 dark:text-white font-medium auth-user-name">Quản trị viên</span>
-    </button>
-    <!-- Admin Profile Popup -->
-    <div id="adminProfilePopup">
-    <div class="p-5 bg-gradient-to-br from-slate-50 to-white border-b border-slate-100">
-        <div class="flex items-center gap-3 mb-3">
-            <img src="" class="auth-user-avatar-img hidden w-12 h-12 rounded-full object-cover border-2 border-slate-200" />
-            <span class="auth-user-avatar-text hidden w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg"></span>
-            <div>
-                <p class="font-semibold text-sm text-slate-900 auth-user-name">Quản trị viên</p>
-                <p class="text-xs text-slate-500 auth-user-email">admin@commercesuite.com</p>
+    <!-- SideNavBar -->
+    <aside
+        class="fixed left-0 top-0 h-screen w-[260px] bg-[#0F172A] dark:bg-slate-950 text-white font-['Inter'] text-sm font-medium border-r border-slate-800 shadow-xl z-50">
+        <div class="flex flex-col h-full py-8">
+            <div class="px-6 mb-8 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-DEFAULT bg-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-primary text-xl">storefront</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-black text-white tracking-wider leading-none">Admin Suite</h1>
+                    <span class="text-xs text-slate-400 mt-1 block">v2.4.0</span>
+                </div>
+            </div>
+            <nav class="flex-1 space-y-1 font-['Inter'] text-sm font-medium">
+                <!-- Bảng điều khiển -->
+                <a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform"
+                    href="admin-dashboard.html">
+                    <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Bảng Điều Khiển
+                </a>
+                <!-- Nhân viên (Admin only) -->
+                <a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform"
+                    href="staff-management.html" data-role="admin-only">
+                    <span class="material-symbols-outlined">badge</span>
+                    Nhân Viên
+                </a>
+                <!-- Khách hàng -->
+                <a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform"
+                    href="customer-management.html">
+                    <span class="material-symbols-outlined" data-icon="group">group</span>
+                    Khách Hàng
+                </a>
+                <!-- Đơn hàng -->
+                <a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform"
+                    href="order-management.html">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    Đơn Hàng
+                </a>
+                <!-- Thanh toán (Đang chọn) -->
+                <a class="flex items-center gap-3 px-6 py-3 text-white border-l-4 border-slate-50 bg-slate-800/40 active:scale-[0.98] transition-transform"
+                    href="payment-management.html">
+                    <span class="material-symbols-outlined" data-icon="payments"
+                        style="font-variation-settings: 'FILL' 1;">payments</span>
+                    Thanh Toán
+                </a>
+                <!-- Hỗ trợ -->
+                <a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform"
+                    href="customer-care.html">
+                    <span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+                    Hỗ Trợ
+                </a>
+            </nav>
+            <div class="px-6 mt-auto">
+                <div class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT bg-slate-800/30 text-slate-300">
+                    <span class="material-symbols-outlined text-sm">info</span>
+                    <span class="text-xs">Trạng thái hệ thống: Hoạt động tốt</span>
+                </div>
             </div>
         </div>
-        <div class="text-xs text-slate-500 space-y-1">
-            <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">badge</span> Vai trò: <span class="auth-user-role">Quản trị viên</span></div>
-            <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">calendar_today</span> Tham gia: 01/01/2024</div>
-        </div>
+    </aside>
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 ml-[260px] flex flex-col h-screen overflow-hidden relative w-[calc(100%-260px)]">
+        <!-- TopNavBar -->
+        <header
+            class="sticky top-0 z-40 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between px-8 h-16">
+            <div class="flex items-center gap-4">
+                <h2 class="hidden md:block text-xl font-bold text-slate-900 dark:text-white">Quản Lý Thanh Toán</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <!-- Nút chuyển sang trang chính -->
+                <a href="index.html"
+                    class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70"
+                    title="Trang chủ">
+                    <span class="material-symbols-outlined" data-icon="home">home</span>
+                </a>
+                <div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-slate-700">
+                    <!-- Admin Profile -->
+                    <div class="relative" id="adminProfileContainer">
+                        <button
+                            class="flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors p-1.5 pr-3 cursor-pointer active:opacity-70"
+                            id="adminProfileBtn">
+                            <img src=""
+                                class="auth-user-avatar-img hidden w-8 h-8 rounded-full border border-slate-200 object-cover" />
+                            <span
+                                class="auth-user-avatar-text hidden w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm"></span>
+                            <span
+                                class="font-['Inter'] text-sm tracking-tight text-slate-900 dark:text-white font-medium auth-user-name">Quản
+                                trị viên</span>
+                            <span class="material-symbols-outlined text-sm text-slate-400">expand_more</span>
+                        </button>
+                        <!-- Admin Profile Popup -->
+                        <div id="adminProfilePopup">
+                            <div class="p-5 bg-gradient-to-br from-slate-50 to-white border-b border-slate-100">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <img src=""
+                                        class="auth-user-avatar-img hidden w-12 h-12 rounded-full object-cover border-2 border-slate-200" />
+                                    <span
+                                        class="auth-user-avatar-text hidden w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg"></span>
+                                    <div>
+                                        <p class="font-semibold text-sm text-slate-900 auth-user-name">Quản trị viên</p>
+                                        <p class="text-xs text-slate-500 auth-user-email">admin@commercesuite.com</p>
+                                    </div>
+                                </div>
+                                <div class="text-xs text-slate-500 space-y-1">
+                                    <div class="flex items-center gap-2"><span
+                                            class="material-symbols-outlined text-sm">badge</span> Vai trò: <span
+                                            class="auth-user-role">Quản trị viên</span></div>
+                                    <div class="flex items-center gap-2"><span
+                                            class="material-symbols-outlined text-sm">calendar_today</span> Tham gia:
+                                        01/01/2024</div>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <a href="login.html"
+                                    class="flex items-center gap-3 px-3 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors w-full"
+                                    id="logoutBtn">
+                                    <span class="material-symbols-outlined text-lg">logout</span>
+                                    Đăng xuất
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Page Content Canvas -->
+        <main class="flex-1 overflow-y-auto p-container-padding bg-background">
+            <!-- Header Section -->
+            <div class="flex justify-between items-end mb-stack-lg">
+                <div>
+                    <h1 class="font-h1 text-h1 text-on-surface mb-stack-sm">Quản Lý Thanh Toán</h1>
+                    <p class="font-body-base text-body-base text-on-surface-variant">Xem và quản lý các bản ghi giao
+                        dịch gần đây.</p>
+                </div>
+            </div>
+            <!-- Filters Section -->
+            <div
+                class="bg-surface-container-lowest border border-outline-variant p-4 rounded-lg shadow-sm mb-stack-md flex items-center gap-gutter">
+                <div class="flex flex-col gap-base-unit">
+                    <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Trạng
+                        Thái</label>
+                    <div class="relative">
+                        <select id="statusFilter"
+                            class="appearance-none bg-transparent border border-outline-variant rounded-DEFAULT py-2 pl-3 pr-8 font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none min-w-[160px]">
+                            <option value="">Tất cả trạng thái</option>
+                            <option value="COMPLETED">Hoàn thành</option>
+                            <option value="PENDING">Đang chờ</option>
+                            <option value="FAILED">Thất bại</option>
+                        </select>
+                        <span
+                            class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-sm"
+                            data-icon="arrow_drop_down">arrow_drop_down</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-base-unit">
+                    <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Phương
+                        Thức</label>
+                    <div class="relative">
+                        <select id="methodFilter"
+                            class="appearance-none bg-transparent border border-outline-variant rounded-DEFAULT py-2 pl-3 pr-8 font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none min-w-[160px]">
+                            <option value="">Tất cả phương thức</option>
+                            <option value="COD">COD</option>
+                            <option value="BANK_TRANSFER">Chuyển khoản</option>
+                            <option value="CARD">Thẻ</option>
+                        </select>
+                        <span
+                            class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-sm"
+                            data-icon="arrow_drop_down">arrow_drop_down</span>
+                    </div>
+                </div>
+                <div class="ml-auto">
+                    <div class="relative">
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm"
+                            data-icon="search">search</span>
+                        <input id="paymentSearch"
+                            class="pl-9 pr-4 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none w-[240px] bg-transparent"
+                            placeholder="Tìm mã đơn hàng..." type="text" />
+                    </div>
+                </div>
+            </div>
+            <!-- Data Table Container -->
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-surface-container-low border-b border-outline-variant">
+                                <th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Mã
+                                    Đơn</th>
+                                <th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">
+                                    Tên Khách Hàng</th>
+                                <th
+                                    class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap text-right">
+                                    Tổng Tiền (VND)</th>
+                                <th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">
+                                    Phương Thức</th>
+                                <th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">
+                                    Trạng Thái</th>
+                                <th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Mã
+                                    Giao Dịch</th>
+                                <th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">
+                                    Ngày</th>
+                                <th
+                                    class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap text-right">
+                                    Thao Tác</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-surface-variant" id="paymentTableBody">
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination -->
+                <div
+                    class="p-4 border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+                    <span class="font-body-sm text-body-sm text-on-surface-variant" id="paymentPaginationInfo">Hiển thị
+                        0 đến 0 của 0 mục</span>
+                    <div class="flex gap-1" id="paymentPaginationControls">
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <div class="p-2">
-        <a href="login.html" class="flex items-center gap-3 px-3 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors w-full" id="logoutBtn">
-            <span class="material-symbols-outlined text-lg">logout</span>
-            Đăng xuất
-        </a>
-    </div>
-    </div>
-    </div>
-</div>
-</div>
-</header>
-<!-- Page Content Canvas -->
-<main class="flex-1 overflow-y-auto p-container-padding bg-background">
-<!-- Header Section -->
-<div class="flex justify-between items-end mb-stack-lg">
-<div>
-<h1 class="font-h1 text-h1 text-on-surface mb-stack-sm">Quản Lý Thanh Toán</h1>
-<p class="font-body-base text-body-base text-on-surface-variant">Xem và quản lý các bản ghi giao dịch gần đây.</p>
-</div>
-</div>
-<!-- Filters Section -->
-<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-lg shadow-sm mb-stack-md flex items-center gap-gutter">
-<div class="flex flex-col gap-base-unit">
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Trạng Thái</label>
-<div class="relative">
-<select id="statusFilter" class="appearance-none bg-transparent border border-outline-variant rounded-DEFAULT py-2 pl-3 pr-8 font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none min-w-[160px]">
-<option value="all">Tất cả trạng thái</option>
-<option value="completed">Hoàn thành</option>
-<option value="pending">Đang chờ</option>
-<option value="failed">Thất bại</option>
-</select>
-<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-sm" data-icon="arrow_drop_down">arrow_drop_down</span>
-</div>
-</div>
-<div class="flex flex-col gap-base-unit">
-<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Phương Thức</label>
-<div class="relative">
-<select id="methodFilter" class="appearance-none bg-transparent border border-outline-variant rounded-DEFAULT py-2 pl-3 pr-8 font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none min-w-[160px]">
-<option value="all">Tất cả phương thức</option>
-<option value="cod">COD</option>
-<option value="bank_transfer">Chuyển khoản</option>
-<option value="card">Thẻ</option>
-</select>
-<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-sm" data-icon="arrow_drop_down">arrow_drop_down</span>
-</div>
-</div>
-<div class="ml-auto">
-<div class="relative">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="search">search</span>
-<input id="paymentSearch" class="pl-9 pr-4 py-2 border border-outline-variant rounded-DEFAULT font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none w-[240px] bg-transparent" placeholder="Tìm mã đơn hàng..." type="text"/>
-</div>
-</div>
-</div>
-<!-- Data Table Container -->
-<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm">
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-low border-b border-outline-variant">
-<th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Mã Đơn</th>
-<th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Tên Khách Hàng</th>
-<th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap text-right">Tổng Tiền (VND)</th>
-<th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Phương Thức</th>
-<th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Trạng Thái</th>
-<th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Mã Giao Dịch</th>
-<th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Ngày</th>
-<th class="p-4 font-label-md text-label-md text-on-surface-variant whitespace-nowrap text-right">Thao Tác</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-surface-variant" id="paymentTableBody">
-</tbody>
-</table>
-</div>
-<!-- Pagination -->
-<div class="p-4 border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between">
-<span class="font-body-sm text-body-sm text-on-surface-variant" id="paymentPaginationInfo">Hiển thị 1 đến 5 của 42 mục</span>
-<div class="flex gap-1">
-<button class="p-1 border border-outline-variant rounded hover:bg-surface-container-low transition-colors text-on-surface-variant disabled:opacity-50" disabled="">
-<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
-</button>
-<button class="px-3 py-1 border border-primary bg-primary text-on-primary rounded font-label-sm text-label-sm">1</button>
-<button class="px-3 py-1 border border-outline-variant hover:bg-surface-container-low text-on-surface rounded font-label-sm text-label-sm transition-colors">2</button>
-<button class="px-3 py-1 border border-outline-variant hover:bg-surface-container-low text-on-surface rounded font-label-sm text-label-sm transition-colors">3</button>
-<span class="px-2 py-1 text-on-surface-variant">...</span>
-<button class="p-1 border border-outline-variant rounded hover:bg-surface-container-low transition-colors text-on-surface-variant">
-<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</main>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="js/auth_guard.js"></script>
-<script src="js/payments.js?v=3"></script>
-<script>
-    // Admin Profile Popup Toggle
-    document.getElementById('adminProfileBtn').addEventListener('click', function(e) {
-        e.stopPropagation();
-        document.getElementById('adminProfilePopup').classList.toggle('show');
-    });
-    document.addEventListener('click', function(e) {
-        const popup = document.getElementById('adminProfilePopup');
-        const container = document.getElementById('adminProfileContainer');
-        if (popup && container && !container.contains(e.target)) {
-            popup.classList.remove('show');
-        }
-    });
-    document.getElementById('logoutBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        if (confirm('Bạn có chắc muốn đăng xuất?')) {
-            fetch('../../api/auth/logout.php', { method: 'POST' })
-                .then(() => { window.location.href = 'login.html'; })
-                .catch(() => { window.location.href = 'login.html'; });
-        }
-    });
-</script>
-</body></html>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/auth_guard.js"></script>
+    <script src="js/payments.js?v=3"></script>
+    <script>
+        // Admin Profile Popup Toggle
+        document.getElementById('adminProfileBtn').addEventListener('click', function (e) {
+            e.stopPropagation();
+            document.getElementById('adminProfilePopup').classList.toggle('show');
+        });
+        document.addEventListener('click', function (e) {
+            const popup = document.getElementById('adminProfilePopup');
+            const container = document.getElementById('adminProfileContainer');
+            if (popup && container && !container.contains(e.target)) {
+                popup.classList.remove('show');
+            }
+        });
+        document.getElementById('logoutBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            if (confirm('Bạn có chắc muốn đăng xuất?')) {
+                fetch('../../api/auth/logout.php', { method: 'POST' })
+                    .then(() => { window.location.href = 'login.html'; })
+                    .catch(() => { window.location.href = 'login.html'; });
+            }
+        });
+    </script>
+</body>
+
+</html>

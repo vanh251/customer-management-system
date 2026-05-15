@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Check Admin Session API - GET
-// Returns whether admin is currently logged in
+// API Kiểm tra phiên đăng nhập (Session) - Phương thức GET
+// Trả về thông tin người dùng nếu đang đăng nhập hợp lệ
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 

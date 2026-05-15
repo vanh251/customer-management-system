@@ -48,23 +48,24 @@
 <!-- Main Content Wrapper -->
 <div class="ml-[260px] flex flex-col min-h-screen w-[calc(100%-260px)]">
 <!-- TopNavBar -->
-<header class="sticky top-0 z-40 w-full bg-white border-b border-slate-200 shadow-sm flex items-center justify-between px-8 h-16">
-<div class="flex items-center gap-4"><span class="text-xl font-bold text-slate-900">Quản Lý Nhân Viên</span></div>
-<div class="flex items-center gap-6">
-<a href="index.html" class="text-slate-500 hover:bg-slate-50 rounded-md p-2 transition-colors" title="Trang chủ"><span class="material-symbols-outlined">home</span></a>
-<div class="h-6 w-px bg-slate-200"></div>
+<header class="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm" style="width:calc(100% - 260px);">
+<div class="flex items-center justify-between px-8 h-16">
+<span class="text-xl font-bold text-slate-900 dark:text-white">Quản Lý Nhân Viên</span>
+<div class="flex items-center gap-4">
+<a href="index.html" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70" title="Trang chủ"><span class="material-symbols-outlined">home</span></a>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
 <div class="relative" id="adminProfileContainer">
-<button class="flex items-center gap-3 hover:bg-slate-50 rounded-md p-1.5 pr-3" id="adminProfileBtn">
-<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
-<span class="font-label-sm text-label-sm text-on-primary-container auth-user-avatar-text">QT</span>
-<img src="" class="auth-user-avatar-img hidden w-full h-full object-cover" />
-</div>
-<span class="font-label-md text-label-md auth-user-name">Quản trị viên</span>
+<button class="flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md p-1.5 pr-3 transition-colors cursor-pointer active:opacity-70" id="adminProfileBtn">
+<img src="" class="auth-user-avatar-img hidden w-8 h-8 rounded-full object-cover border border-slate-200" />
+<span class="auth-user-avatar-text hidden w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm"></span>
+<span class="font-medium text-sm text-slate-900 dark:text-white auth-user-name">Quản trị viên</span>
+<span class="material-symbols-outlined text-sm text-slate-400">expand_more</span>
 </button>
 <div id="adminProfilePopup">
 <div class="p-5 bg-gradient-to-br from-slate-50 to-white border-b border-slate-100">
     <div class="flex items-center gap-3 mb-3">
-        <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center border-2 border-slate-200 overflow-hidden"><span class="font-label-md text-label-md text-on-primary-container auth-user-avatar-text">QT</span><img src="" class="auth-user-avatar-img hidden w-full h-full object-cover" /></div>
+        <img src="" class="auth-user-avatar-img hidden w-12 h-12 rounded-full object-cover border-2 border-slate-200" />
+        <span class="auth-user-avatar-text hidden w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg"></span>
         <div><p class="font-semibold text-sm text-slate-900 auth-user-name">Quản trị viên</p><p class="text-xs text-slate-500 auth-user-email">admin@commercesuite.com</p></div>
     </div>
 </div>

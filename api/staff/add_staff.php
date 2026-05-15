@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Add Staff API - POST
-// Creates a new user with role='STAFF'. Admin only.
+// API Thêm nhân viên - Phương thức POST
+// Tạo một người dùng mới có quyền 'STAFF'. Chỉ dành cho Admin.
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
@@ -25,7 +25,7 @@ if (empty($full_name) || empty($email) || empty($password)) {
 }
 
 try {
-    // Check duplicate email
+    // Kiểm tra xem email đã bị trùng hay chưa
     $check = $pdo->prepare("SELECT id FROM users WHERE email = :email LIMIT 1");
     $check->execute([':email' => $email]);
     if ($check->fetch()) {

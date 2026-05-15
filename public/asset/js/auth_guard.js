@@ -1,14 +1,14 @@
 // ============================================================
-// Auth Guard - Include on every page (except login)
-// Checks session, enforces role-based access, updates UI
+// Auth Guard - Tích hợp trên mọi trang (ngoại trừ trang đăng nhập)
+// Kiểm tra phiên đăng nhập (session), thực thi quyền truy cập dựa trên vai trò, cập nhật giao diện
 // ============================================================
 (function () {
     const API_BASE = '../../api';
     const currentPage = window.location.pathname.split('/').pop();
 
-    // Pages restricted to ADMIN only
+    // Các trang chỉ dành cho quản trị viên (ADMIN)
     const ADMIN_ONLY_PAGES = ['staff-management.html'];
-    // Default redirect for each role
+    // Điều hướng mặc định tương ứng cho từng vai trò
     const ROLE_REDIRECT = {
         ADMIN: 'admin-dashboard.html',
         STAFF: 'customer-management.html'
@@ -18,7 +18,7 @@
         url: API_BASE + '/auth/check_admin.php',
         type: 'GET',
         dataType: 'json',
-        async: false, // Block page render until auth check completes
+        async: false, // Chặn (block) việc hiển thị trang cho đến khi kiểm tra quyền hoàn tất
         success: function (res) {
             if (!res.success) {
                 window.location.href = 'login.html';
@@ -29,18 +29,18 @@
             const email = res.data.email || 'N/A';
             const avatar = res.data.avatar_url || '';
 
-            // Block STAFF from admin-only pages
+            // Chặn nhân viên (STAFF) truy cập vào các trang dành riêng cho ADMIN
             if (role === 'STAFF' && ADMIN_ONLY_PAGES.includes(currentPage)) {
                 window.location.href = ROLE_REDIRECT.STAFF;
                 return;
             }
 
-            // Hide admin-only menu items for STAFF
+            // Ẩn các menu/tính năng chỉ dành cho ADMIN nếu người dùng là STAFF
             if (role === 'STAFF') {
                 $('[data-role="admin-only"]').hide();
             }
 
-            // Update header profile name and role badge
+            // Cập nhật tên, vai trò và email của người dùng trên thanh header
             $('.auth-user-name').text(name);
             $('.auth-user-role').text(role === 'ADMIN' ? 'Quản trị viên' : 'Nhân viên');
             $('.auth-user-email').text(email);
@@ -53,7 +53,7 @@
                 $('.auth-user-avatar-text').text(name.charAt(0).toUpperCase()).show();
             }
 
-            // Store role globally for other JS to use
+            // Lưu trữ thông tin vai trò ở biến toàn cục để các script khác có thể sử dụng
             window.__USER_ROLE = role;
             window.__USER_ID = res.data.id;
             window.__USER_NAME = name;

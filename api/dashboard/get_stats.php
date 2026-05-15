@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Dashboard Stats API - GET
-// Returns: monthly metrics and growth compared to previous month
+// API Thống kê trang tổng quan (Dashboard) - Phương thức GET
+// Trả về: các chỉ số trong tháng và tỷ lệ tăng trưởng so với tháng trước
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';

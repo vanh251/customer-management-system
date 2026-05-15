@@ -1,108 +1,113 @@
 <!DOCTYPE html>
 
-<html class="light" lang="vi"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chăm Sóc Khách Hàng - Admin</title>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Design System Configuration -->
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "error": "#ba1a1a",
-                    "on-tertiary-fixed": "#271901",
-                    "on-error-container": "#93000a",
-                    "on-primary": "#ffffff",
-                    "primary-fixed-dim": "#bec6e0",
-                    "on-primary-fixed-variant": "#3f465c",
-                    "inverse-surface": "#303032",
-                    "outline-variant": "#c6c6cd",
-                    "secondary-fixed": "#d3e4fe",
-                    "on-tertiary": "#ffffff",
-                    "tertiary-container": "#271901",
-                    "inverse-primary": "#bec6e0",
-                    "on-surface": "#1b1b1d",
-                    "surface-bright": "#fcf8fa",
-                    "primary": "#000000",
-                    "outline": "#76777d",
-                    "secondary": "#505f76",
-                    "secondary-container": "#d0e1fb",
-                    "background": "#fcf8fa",
-                    "inverse-on-surface": "#f3f0f2",
-                    "on-primary-container": "#7c839b",
-                    "primary-container": "#131b2e",
-                    "surface-variant": "#e4e2e4",
-                    "on-secondary-fixed-variant": "#38485d",
-                    "tertiary-fixed-dim": "#dec29a",
-                    "on-primary-fixed": "#131b2e",
-                    "surface-container-lowest": "#ffffff",
-                    "error-container": "#ffdad6",
-                    "on-surface-variant": "#45464d",
-                    "on-tertiary-fixed-variant": "#574425",
-                    "surface-tint": "#565e74",
-                    "surface-dim": "#dcd9db",
-                    "primary-fixed": "#dae2fd",
-                    "surface-container-low": "#f6f3f5",
-                    "surface-container-highest": "#e4e2e4",
-                    "on-background": "#1b1b1d",
-                    "on-secondary-container": "#54647a",
-                    "on-error": "#ffffff",
-                    "surface-container": "#f0edef",
-                    "secondary-fixed-dim": "#b7c8e1",
-                    "on-secondary-fixed": "#0b1c30",
-                    "surface": "#fcf8fa",
-                    "on-tertiary-container": "#98805d",
-                    "tertiary-fixed": "#fcdeb5",
-                    "tertiary": "#000000",
-                    "on-secondary": "#ffffff",
-                    "surface-container-high": "#eae7e9"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "stack-sm": "8px",
-                    "stack-lg": "32px",
-                    "stack-md": "16px",
-                    "base-unit": "4px",
-                    "gutter": "16px",
-                    "container-padding": "24px"
-            },
-            "fontFamily": {
-                    "h2": ["Inter"],
-                    "label-md": ["Inter"],
-                    "body-base": ["Inter"],
-                    "data-mono": ["Inter"],
-                    "h3": ["Inter"],
-                    "h1": ["Inter"],
-                    "body-sm": ["Inter"],
-                    "label-sm": ["Inter"]
-            },
-            "fontSize": {
-                    "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
-                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
-                    "body-base": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
-                    "data-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
-                    "h3": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
-                    "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
-                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}]
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Chăm Sóc Khách Hàng - Admin</title>
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Design System Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#271901",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#303032",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#271901",
+                        "inverse-primary": "#bec6e0",
+                        "on-surface": "#1b1b1d",
+                        "surface-bright": "#fcf8fa",
+                        "primary": "#000000",
+                        "outline": "#76777d",
+                        "secondary": "#505f76",
+                        "secondary-container": "#d0e1fb",
+                        "background": "#fcf8fa",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-primary-container": "#7c839b",
+                        "primary-container": "#131b2e",
+                        "surface-variant": "#e4e2e4",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-tint": "#565e74",
+                        "surface-dim": "#dcd9db",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container-low": "#f6f3f5",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-background": "#1b1b1d",
+                        "on-secondary-container": "#54647a",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f0edef",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface": "#fcf8fa",
+                        "on-tertiary-container": "#98805d",
+                        "tertiary-fixed": "#fcdeb5",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae7e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "base-unit": "4px",
+                        "gutter": "16px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-base": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "h3": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-base": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "data-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "h3": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h1": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                }
             }
-          }
         }
-      }
     </script>
-<style>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
         /* Admin Profile Popup */
         #adminProfilePopup {
             display: none;
@@ -114,220 +119,273 @@
             background: white;
             border: 1px solid #c6c6cd;
             border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
             z-index: 100;
             overflow: hidden;
             animation: fadeInDown 0.2s ease;
         }
-        #adminProfilePopup.show { display: block; }
+
+        #adminProfilePopup.show {
+            display: block;
+        }
+
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
+
 <body class="bg-surface text-on-surface h-screen overflow-hidden flex flex-col font-sans">
-<!-- SideNavBar -->
-<aside class="fixed left-0 top-0 h-screen w-[260px] bg-[#0F172A] dark:bg-slate-950 text-white font-['Inter'] text-sm font-medium border-r border-slate-800 shadow-xl z-50">
-<div class="flex flex-col h-full py-8">
-<div class="px-6 mb-8 flex items-center gap-3">
-<div class="w-8 h-8 rounded-DEFAULT bg-primary flex items-center justify-center">
-<span class="material-symbols-outlined text-on-primary text-xl">storefront</span>
-</div>
-<div>
-<h1 class="text-lg font-black text-white tracking-wider leading-none">Admin Suite</h1>
-<span class="text-xs text-slate-400 mt-1 block">v2.4.0</span>
-</div>
-</div>
-<nav class="flex-1 space-y-1 font-['Inter'] text-sm font-medium">
-<!-- Bảng điều khiển -->
-<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="admin-dashboard.html">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-    Bảng Điều Khiển
-</a>
-<!-- Nhân viên (Admin only) -->
-<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="staff-management.html" data-role="admin-only">
-<span class="material-symbols-outlined">badge</span>
-    Nhân Viên
-</a>
-<!-- Khách hàng -->
-<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="customer-management.html">
-<span class="material-symbols-outlined" data-icon="group">group</span>
-    Khách Hàng
-</a>
-<!-- Đơn hàng -->
-<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="order-management.html">
-<span class="material-symbols-outlined">shopping_cart</span>
-    Đơn Hàng
-</a>
-<!-- Thanh toán -->
-<a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform" href="payment-management.html">
-<span class="material-symbols-outlined" data-icon="payments">payments</span>
-    Thanh Toán
-</a>
-<!-- Hỗ trợ (Đang chọn) -->
-<a class="flex items-center gap-3 px-6 py-3 text-white border-l-4 border-slate-50 bg-slate-800/40 active:scale-[0.98] transition-transform" href="customer-care.html">
-<span class="material-symbols-outlined" data-icon="support_agent" style="font-variation-settings: 'FILL' 1;">support_agent</span>
-    Hỗ Trợ
-</a>
-</nav>
-<div class="px-6 mt-auto">
-<div class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT bg-slate-800/30 text-slate-300">
-<span class="material-symbols-outlined text-sm">info</span>
-<span class="text-xs">Trạng thái hệ thống: Hoạt động tốt</span>
-</div>
-</div>
-</div>
-</aside>
-<!-- TopNavBar -->
-<header class="bg-white dark:bg-slate-900 text-[#0F172A] dark:text-slate-100 font-['Inter'] text-sm tracking-tight sticky top-0 z-40 w-full border-b border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between px-8 h-16 ml-[260px]" style="width: calc(100% - 260px);">
-<!-- Search Area -->
-<div class="flex items-center gap-6 flex-1">
-<span class="hidden md:block text-xl font-bold text-slate-900 dark:text-white cursor-pointer active:opacity-70 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors px-2 py-1">Bảng Điều Khiển</span>
-<div class="relative w-full max-w-md">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-transparent rounded-md text-sm focus:border-slate-300 focus:ring-0 focus:bg-white dark:focus:bg-slate-900 transition-colors text-slate-900 dark:text-slate-100 placeholder-slate-500" placeholder="Tìm kiếm..." type="text"/>
-</div>
-</div>
-<!-- Trailing Actions -->
-<div class="flex items-center gap-4">
-<!-- Nút chuyển sang trang chính -->
-<a href="index.html" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors cursor-pointer active:opacity-70 relative" title="Trang chủ">
-<span class="material-symbols-outlined">home</span>
-</a>
-<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-800 mx-2"></div>
-<!-- Admin Profile -->
-<div class="relative" id="adminProfileContainer">
-<button class="flex items-center gap-3 cursor-pointer active:opacity-70 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors p-1.5 pr-3" id="adminProfileBtn">
-<div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden shrink-0 flex items-center justify-center">
-<span class="auth-user-avatar-text hidden font-bold text-sm text-slate-700"></span>
-<img src="" class="auth-user-avatar-img hidden w-full h-full object-cover" />
-</div>
-<span class="text-slate-900 dark:text-white font-bold hidden sm:block text-sm auth-user-name">Quản trị viên</span>
-</button>
-<!-- Admin Profile Popup -->
-<div id="adminProfilePopup">
-    <div class="p-5 bg-gradient-to-br from-slate-50 to-white border-b border-slate-100">
-        <div class="flex items-center gap-3 mb-3">
-            <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden border-2 border-slate-200 flex items-center justify-center">
-                <span class="auth-user-avatar-text hidden font-bold text-lg text-slate-700"></span>
-                <img src="" class="auth-user-avatar-img hidden w-full h-full object-cover" />
+    <!-- SideNavBar -->
+    <aside
+        class="fixed left-0 top-0 h-screen w-[260px] bg-[#0F172A] dark:bg-slate-950 text-white font-['Inter'] text-sm font-medium border-r border-slate-800 shadow-xl z-50">
+        <div class="flex flex-col h-full py-8">
+            <div class="px-6 mb-8 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-DEFAULT bg-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-primary text-xl">storefront</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-black text-white tracking-wider leading-none">Admin Suite</h1>
+                    <span class="text-xs text-slate-400 mt-1 block">v2.4.0</span>
+                </div>
             </div>
-            <div>
-                <p class="font-semibold text-sm text-slate-900 auth-user-name">Quản trị viên</p>
-                <p class="text-xs text-slate-500 auth-user-email">admin@commercesuite.com</p>
+            <nav class="flex-1 space-y-1 font-['Inter'] text-sm font-medium">
+                <!-- Bảng điều khiển -->
+                <a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform"
+                    href="admin-dashboard.html">
+                    <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Bảng Điều Khiển
+                </a>
+                <!-- Nhân viên (Admin only) -->
+                <a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform"
+                    href="staff-management.html" data-role="admin-only">
+                    <span class="material-symbols-outlined">badge</span>
+                    Nhân Viên
+                </a>
+                <!-- Khách hàng -->
+                <a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform"
+                    href="customer-management.html">
+                    <span class="material-symbols-outlined" data-icon="group">group</span>
+                    Khách Hàng
+                </a>
+                <!-- Đơn hàng -->
+                <a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform"
+                    href="order-management.html">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    Đơn Hàng
+                </a>
+                <!-- Thanh toán -->
+                <a class="flex items-center gap-3 px-6 py-3 text-slate-400 hover:bg-slate-800/60 hover:text-white transition-all duration-200 active:scale-[0.98] transition-transform"
+                    href="payment-management.html">
+                    <span class="material-symbols-outlined" data-icon="payments">payments</span>
+                    Thanh Toán
+                </a>
+                <!-- Hỗ trợ (Đang chọn) -->
+                <a class="flex items-center gap-3 px-6 py-3 text-white border-l-4 border-slate-50 bg-slate-800/40 active:scale-[0.98] transition-transform"
+                    href="customer-care.html">
+                    <span class="material-symbols-outlined" data-icon="support_agent"
+                        style="font-variation-settings: 'FILL' 1;">support_agent</span>
+                    Hỗ Trợ
+                </a>
+            </nav>
+            <div class="px-6 mt-auto">
+                <div class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT bg-slate-800/30 text-slate-300">
+                    <span class="material-symbols-outlined text-sm">info</span>
+                    <span class="text-xs">Trạng thái hệ thống: Hoạt động tốt</span>
+                </div>
             </div>
         </div>
-        <div class="text-xs text-slate-500 space-y-1">
-            <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">badge</span> Vai trò: <span class="auth-user-role">Quản trị viên</span></div>
-            <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">calendar_today</span> Tham gia: 01/01/2024</div>
+    </aside>
+    <!-- TopNavBar -->
+    <header
+        class="bg-white dark:bg-slate-900 sticky top-0 z-40 w-full border-b border-slate-200 dark:border-slate-800 shadow-sm ml-[260px]"
+        style="width:calc(100% - 260px);">
+        <div class="flex items-center justify-between px-8 h-16">
+            <span class="text-xl font-bold text-slate-900 dark:text-white">Hỗ Trợ Khách Hàng</span>
+            <!-- Trailing Actions -->
+            <div class="flex items-center gap-4">
+                <a href="index.html"
+                    class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70"
+                    title="Trang chủ">
+                    <span class="material-symbols-outlined">home</span>
+                </a>
+                <div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
+                <!-- Admin Profile -->
+                <div class="relative" id="adminProfileContainer">
+                    <button
+                        class="flex items-center gap-3 cursor-pointer active:opacity-70 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors p-1.5 pr-3"
+                        id="adminProfileBtn">
+                        <img src=""
+                            class="auth-user-avatar-img hidden w-8 h-8 rounded-full object-cover border border-slate-200" />
+                        <span
+                            class="auth-user-avatar-text hidden w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm"></span>
+                        <span class="font-medium text-sm text-slate-900 dark:text-white auth-user-name">Quản trị
+                            viên</span>
+                        <span class="material-symbols-outlined text-sm text-slate-400">expand_more</span>
+                    </button>
+                    <!-- Admin Profile Popup -->
+                    <div id="adminProfilePopup">
+                        <div class="p-5 bg-gradient-to-br from-slate-50 to-white border-b border-slate-100">
+                            <div class="flex items-center gap-3 mb-3">
+                                <img src=""
+                                    class="auth-user-avatar-img hidden w-12 h-12 rounded-full object-cover border-2 border-slate-200" />
+                                <span
+                                    class="auth-user-avatar-text hidden w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg"></span>
+                                <div>
+                                    <p class="font-semibold text-sm text-slate-900 auth-user-name">Quản trị viên</p>
+                                    <p class="text-xs text-slate-500 auth-user-email">admin@commercesuite.com</p>
+                                </div>
+                            </div>
+                            <div class="text-xs text-slate-500 space-y-1">
+                                <div class="flex items-center gap-2"><span
+                                        class="material-symbols-outlined text-sm">badge</span> Vai trò: <span
+                                        class="auth-user-role">Quản trị viên</span></div>
+                                <div class="flex items-center gap-2"><span
+                                        class="material-symbols-outlined text-sm">calendar_today</span> Tham gia:
+                                    01/01/2024</div>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <a href="login.html"
+                                class="flex items-center gap-3 px-3 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors w-full"
+                                id="logoutBtn">
+                                <span class="material-symbols-outlined text-lg">logout</span>
+                                Đăng xuất
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-<div class="p-2">
-    <a href="login.html" class="flex items-center gap-3 px-3 py-2.5 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors w-full" id="logoutBtn">
-        <span class="material-symbols-outlined text-lg">logout</span>
-        Đăng xuất
-    </a>
-</div>
-</div>
-</div>
-</div>
-</header>
-<!-- Main Content: Split View -->
-<main class="flex-1 ml-[260px] flex overflow-hidden bg-surface">
-<!-- Left Panel: Ticket List -->
-<section class="w-1/3 min-w-[320px] max-w-[400px] border-r border-outline-variant bg-surface-container flex flex-col h-full z-10 shadow-[4px_0_12px_rgba(15,23,42,0.02)]">
-<!-- List Header -->
-<div class="p-container-padding border-b border-outline-variant bg-surface-container-lowest flex items-center justify-between shrink-0">
-<div class="flex flex-col gap-1">
-<h2 class="font-h3 text-h3 text-on-surface">Yêu Cầu Đang Mở</h2>
-<span class="font-label-sm text-label-sm text-on-surface-variant" id="ticketCount">14 yêu cầu đang mở</span>
-</div>
-<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">
-<span class="material-symbols-outlined text-[20px]">filter_list</span>
-</button>
-</div>
-<!-- List Items -->
-<div class="flex-1 overflow-y-auto" id="ticketList">
-</div>
-</section>
-<!-- Right Panel: Active Conversation -->
-<section class="flex-1 flex flex-col h-full bg-surface-container-lowest">
-<!-- Convo Header -->
-<div class="h-[88px] border-b border-outline-variant px-8 flex items-center justify-between shrink-0 bg-surface-container-lowest shadow-sm z-10">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface-container-high" id="convoHeaderAvatar">
-<img alt="" class="w-full h-full object-cover" data-alt="portrait of a man with a beard looking serious in natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlHruVRQpT1EPkCpolT4KIUodXarWcIu4lAg9nLIvoO3o8fEOBqLabGNdyNjFKIWiNWnDwnf9Q4YDh7Vny6B6OpxsZhzZxEspVNfNMpbYijqKqaXP34trfmZTtYs8wjm0kyEHZLi5F6mgrxRAO-uX6-LsahR4rquso2wemDnRewgK7CqLwvcjon9IhPHrRah3SNZixKOBIdZCqBz-mmkaPPJ2U9zPGhu0e1JdEdMeqwiKxC7WmQVhoEPzZs57Qz7omKbXGRURtBt8"/>
-</div>
-<div class="flex flex-col gap-1">
-<div class="flex items-center gap-3">
-<h2 class="font-h3 text-h3 text-on-surface" id="convoHeaderName">Marcus Chen</h2>
-<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm">Hạng Cao Cấp</span>
-</div>
-<div class="flex items-center gap-4 font-label-sm text-label-sm text-on-surface-variant">
-<span class="flex items-center gap-1" id="convoHeaderEmail"><span class="material-symbols-outlined text-[16px]">mail</span> marcus.chen@example.com</span>
-<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> Giờ địa phương: 14:32</span>
-</div>
-</div>
-</div>
-<div class="flex gap-2">
-<button class="px-4 py-2 rounded-lg border border-outline-variant font-label-md text-label-md text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px]">history</span>
+    </header>
+    <!-- Main Content: Split View -->
+    <main class="flex-1 ml-[260px] flex overflow-hidden bg-surface">
+        <!-- Left Panel: Ticket List -->
+        <section
+            class="w-1/3 min-w-[320px] max-w-[400px] border-r border-outline-variant bg-surface-container flex flex-col h-full z-10 shadow-[4px_0_12px_rgba(15,23,42,0.02)]">
+            <!-- List Header -->
+            <div
+                class="p-container-padding border-b border-outline-variant bg-surface-container-lowest flex items-center justify-between shrink-0">
+                <div class="flex flex-col gap-1">
+                    <h2 class="font-h3 text-h3 text-on-surface">Yêu Cầu Đang Mở</h2>
+                    <span class="font-label-sm text-label-sm text-on-surface-variant" id="ticketCount">14 yêu cầu đang
+                        mở</span>
+                </div>
+                <button
+                    class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container transition-colors">
+                    <span class="material-symbols-outlined text-[20px]">filter_list</span>
+                </button>
+            </div>
+            <!-- List Items -->
+            <div class="flex-1 overflow-y-auto" id="ticketList">
+            </div>
+        </section>
+        <!-- Right Panel: Active Conversation -->
+        <section class="flex-1 flex flex-col h-full bg-surface-container-lowest">
+            <!-- Convo Header -->
+            <div
+                class="h-[88px] border-b border-outline-variant px-8 flex items-center justify-between shrink-0 bg-surface-container-lowest shadow-sm z-10">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface-container-high"
+                        id="convoHeaderAvatar">
+                        <img alt="" class="w-full h-full object-cover"
+                            data-alt="portrait of a man with a beard looking serious in natural lighting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlHruVRQpT1EPkCpolT4KIUodXarWcIu4lAg9nLIvoO3o8fEOBqLabGNdyNjFKIWiNWnDwnf9Q4YDh7Vny6B6OpxsZhzZxEspVNfNMpbYijqKqaXP34trfmZTtYs8wjm0kyEHZLi5F6mgrxRAO-uX6-LsahR4rquso2wemDnRewgK7CqLwvcjon9IhPHrRah3SNZixKOBIdZCqBz-mmkaPPJ2U9zPGhu0e1JdEdMeqwiKxC7WmQVhoEPzZs57Qz7omKbXGRURtBt8" />
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <div class="flex items-center gap-3">
+                            <h2 class="font-h3 text-h3 text-on-surface" id="convoHeaderName">Marcus Chen</h2>
+                            <span
+                                class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm">Hạng
+                                Cao Cấp</span>
+                        </div>
+                        <div class="flex items-center gap-4 font-label-sm text-label-sm text-on-surface-variant">
+                            <span class="flex items-center gap-1" id="convoHeaderEmail"><span
+                                    class="material-symbols-outlined text-[16px]">mail</span>
+                                marcus.chen@example.com</span>
+                            <span class="flex items-center gap-1"><span
+                                    class="material-symbols-outlined text-[16px]">schedule</span> Giờ địa phương:
+                                14:32</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="px-4 py-2 rounded-lg border border-outline-variant font-label-md text-label-md text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">history</span>
                         Lịch sử
                     </button>
-<button id="resolveBtn" class="px-4 py-2 rounded-lg bg-surface-container-high font-label-md text-label-md text-on-surface hover:bg-surface-variant transition-colors flex items-center gap-2">
+                    <button id="resolveBtn"
+                        class="px-4 py-2 rounded-lg bg-surface-container-high font-label-md text-label-md text-on-surface hover:bg-surface-variant transition-colors flex items-center gap-2">
                         Đánh dấu đã giải quyết
                     </button>
-</div>
-</div>
-<!-- Chat Canvas -->
-<div class="flex-1 overflow-y-auto p-8 flex flex-col gap-6 bg-surface-bright" id="chatCanvas">
-</div>
-<!-- Composer Area -->
-<div class="p-6 bg-surface-container-lowest border-t border-outline-variant shrink-0">
-<div class="border border-outline-variant rounded-xl bg-surface-bright focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all overflow-hidden flex flex-col">
-<textarea id="replyMessage" class="w-full bg-transparent border-none focus:ring-0 resize-none p-4 font-body-base text-body-base text-on-surface placeholder:text-on-surface-variant outline-none" placeholder="Nhập câu trả lời..." rows="3"></textarea>
-<div class="bg-surface-container px-4 py-3 flex items-center justify-between border-t border-outline-variant/50">
-<!-- Toolbar -->
-<div class="flex items-center gap-1">
+                </div>
+            </div>
+            <!-- Chat Canvas -->
+            <div class="flex-1 overflow-y-auto p-8 flex flex-col gap-6 bg-surface-bright" id="chatCanvas">
+            </div>
+            <!-- Composer Area -->
+            <div class="p-6 bg-surface-container-lowest border-t border-outline-variant shrink-0">
+                <div
+                    class="border border-outline-variant rounded-xl bg-surface-bright focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all overflow-hidden flex flex-col">
+                    <textarea id="replyMessage"
+                        class="w-full bg-transparent border-none focus:ring-0 resize-none p-4 font-body-base text-body-base text-on-surface placeholder:text-on-surface-variant outline-none"
+                        placeholder="Nhập câu trả lời..." rows="3"></textarea>
+                    <div
+                        class="bg-surface-container px-4 py-3 flex items-center justify-between border-t border-outline-variant/50">
+                        <!-- Toolbar -->
+                        <div class="flex items-center gap-1">
 
-</div>
-<!-- Send Action -->
-<div class="flex items-center gap-3">
-<span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:inline-block">Nhấn Enter để gửi</span>
-<button id="sendReplyBtn" class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-lg hover:bg-primary/90 transition-colors shadow-sm flex items-center gap-2">
+                        </div>
+                        <!-- Send Action -->
+                        <div class="flex items-center gap-3">
+                            <span
+                                class="font-label-sm text-label-sm text-on-surface-variant hidden sm:inline-block">Nhấn
+                                Enter để gửi</span>
+                            <button id="sendReplyBtn"
+                                class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-lg hover:bg-primary/90 transition-colors shadow-sm flex items-center gap-2">
                                 Gửi
                                 <span class="material-symbols-outlined text-[18px]">send</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="js/auth_guard.js"></script>
-<script src="js/support.js"></script>
-<script>
-    // Admin Profile Popup Toggle
-    document.getElementById('adminProfileBtn').addEventListener('click', function(e) {
-        e.stopPropagation();
-        document.getElementById('adminProfilePopup').classList.toggle('show');
-    });
-    document.addEventListener('click', function(e) {
-        const popup = document.getElementById('adminProfilePopup');
-        const container = document.getElementById('adminProfileContainer');
-        if (popup && container && !container.contains(e.target)) {
-            popup.classList.remove('show');
-        }
-    });
-    document.getElementById('logoutBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        if (confirm('Bạn có chắc muốn đăng xuất?')) {
-            fetch('../../api/auth/logout.php', { method: 'POST' })
-                .then(() => { window.location.href = 'login.html'; })
-                .catch(() => { window.location.href = 'login.html'; });
-        }
-    });
-</script>
-</body></html>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/auth_guard.js"></script>
+    <script src="js/support.js"></script>
+    <script>
+        // Admin Profile Popup Toggle
+        document.getElementById('adminProfileBtn').addEventListener('click', function (e) {
+            e.stopPropagation();
+            document.getElementById('adminProfilePopup').classList.toggle('show');
+        });
+        document.addEventListener('click', function (e) {
+            const popup = document.getElementById('adminProfilePopup');
+            const container = document.getElementById('adminProfileContainer');
+            if (popup && container && !container.contains(e.target)) {
+                popup.classList.remove('show');
+            }
+        });
+        document.getElementById('logoutBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            if (confirm('Bạn có chắc muốn đăng xuất?')) {
+                fetch('../../api/auth/logout.php', { method: 'POST' })
+                    .then(() => { window.location.href = 'login.html'; })
+                    .catch(() => { window.location.href = 'login.html'; });
+            }
+        });
+    </script>
+</body>
+
+</html>

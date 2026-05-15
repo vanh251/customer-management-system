@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Update Customer API - POST
-// Updates customer info (role='USER' only)
+// API Cập nhật thông tin khách hàng - Phương thức POST
+// Chỉ cập nhật thông tin cho người dùng có vai trò là 'USER'
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
@@ -25,14 +25,14 @@ $customer_tier   = trim($_POST['customer_tier'] ?? 'NONE');
 $tags      = trim($_POST['tags'] ?? '');
 $status    = trim($_POST['status'] ?? 'ACTIVE');
 
-// Validate
+// Xác thực dữ liệu cơ bản
 if ($id <= 0 || empty($full_name) || empty($email)) {
     echo json_encode(['success' => false, 'message' => 'Vui lòng nhập đầy đủ ID, họ tên và email.']);
     exit;
 }
 
 try {
-    // Check email uniqueness (exclude current user)
+    // Kiểm tra xem email có bị trùng với tài khoản khác không (ngoại trừ chính khách hàng này)
     $stmt = $pdo->prepare("SELECT id FROM users WHERE email = :email AND id != :id");
     $stmt->execute([':email' => $email, ':id' => $id]);
     if ($stmt->fetch()) {

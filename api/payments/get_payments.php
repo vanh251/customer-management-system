@@ -1,14 +1,14 @@
 <?php
 // ============================================================
-// Get Payments API - GET
-// Returns orders + payment info (JOIN orders + payments + users)
+// API Lấy danh sách thanh toán - Phương thức GET
+// Trả về thông tin đơn hàng và thanh toán (JOIN bảng orders + payments + users)
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
 require_role('ADMIN', 'STAFF');
 
-$statusFilter = trim($_GET['status'] ?? 'all');
-$methodFilter = trim($_GET['method'] ?? 'all');
+$statusFilter = trim($_GET['status'] ?? '');
+$methodFilter = trim($_GET['method'] ?? '');
 $search       = trim($_GET['search'] ?? '');
 
 try {
@@ -25,19 +25,19 @@ try {
     ";
     $params = [];
 
-    // Payment status filter
-    if ($statusFilter !== 'all') {
+    // Lọc theo trạng thái thanh toán
+    if ($statusFilter !== '') {
         $sql .= " AND p.status = :status";
-        $params[':status'] = strtoupper($statusFilter);
+        $params[':status'] = $statusFilter;
     }
 
-    // Payment method filter
-    if ($methodFilter !== 'all') {
+    // Lọc theo phương thức thanh toán
+    if ($methodFilter !== '') {
         $sql .= " AND p.payment_method = :method";
-        $params[':method'] = strtoupper($methodFilter);
+        $params[':method'] = $methodFilter;
     }
 
-    // Search by order ID
+    // Tìm kiếm theo mã đơn hàng (Order ID)
     if (!empty($search)) {
         $sql .= " AND o.id LIKE :search";
         $params[':search'] = "%{$search}%";

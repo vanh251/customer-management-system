@@ -1,5 +1,5 @@
 // ============================================================
-// Dashboard - jQuery AJAX (admin-dashboard.html + index.html)
+// Dashboard - Xử lý dữ liệu jQuery AJAX (Cho admin-dashboard.html + index.html)
 // ============================================================
 $(document).ready(function () {
 
@@ -15,19 +15,19 @@ $(document).ready(function () {
             .replace(/'/g, "&#039;");
     }
 
-    // ---- Helper: Format VND currency ----
+    // ---- Hàm hỗ trợ: Định dạng tiền tệ VNĐ ----
     function formatVND(amount) {
         return new Intl.NumberFormat('vi-VN').format(amount) + ' ₫';
     }
 
-    // ---- Helper: Format date ----
+    // ---- Hàm hỗ trợ: Định dạng ngày tháng ----
     function formatDate(dateStr) {
         if (!dateStr) return '-';
         const d = new Date(dateStr);
         return d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
     }
 
-    // ---- Helper: Get initials from name ----
+    // ---- Hàm hỗ trợ: Lấy chữ cái đầu tiên của tên (để làm Avatar) ----
     function getInitial(name) {
         if (!name) return '?';
         const parts = name.trim().split(' ');
@@ -35,15 +35,15 @@ $(document).ready(function () {
     }
 
     // ============================================================
-    // admin-dashboard.html: Load Stats Cards
+    // admin-dashboard.html: Tải và hiển thị các thẻ thống kê (Stats Cards)
     // ============================================================
     function renderGrowth(idPrefix, growth) {
         const container = $(`#${idPrefix}-growth-container`);
         const icon = $(`#${idPrefix}-icon`);
         const text = $(`#${idPrefix}-growth`);
-        
+
         container.removeClass('text-[#059669] text-error text-[#D97706] text-slate-500');
-        
+
         if (growth > 0) {
             container.addClass('text-[#059669]');
             icon.text('trending_up');
@@ -77,7 +77,7 @@ $(document).ready(function () {
                     renderGrowth('stat-orders', d.new_orders.growth);
 
                     $('#stat-tickets').text(new Intl.NumberFormat('vi-VN').format(d.open_tickets.value));
-                    // Tickets open doesn't use growth render
+                    // Số lượng ticket đang mở không cần hiển thị % tăng trưởng
                 }
             },
             error: function (xhr) {
@@ -87,7 +87,7 @@ $(document).ready(function () {
             }
         });
 
-        // Initialize Chart
+        // Khởi tạo biểu đồ Doanh thu và Khách hàng (Chart.js)
         const chartCanvas = document.getElementById('revenueChart');
         let revenueChartInstance = null;
 
@@ -145,7 +145,7 @@ $(document).ready(function () {
                                         legend: { display: true, position: 'top' },
                                         tooltip: {
                                             callbacks: {
-                                                label: function(context) {
+                                                label: function (context) {
                                                     if (context.dataset.yAxisID === 'y') {
                                                         return context.dataset.label + ': ' + formatVND(context.raw);
                                                     }
@@ -161,7 +161,7 @@ $(document).ready(function () {
                                             position: 'left',
                                             beginAtZero: true,
                                             ticks: {
-                                                callback: function(value) {
+                                                callback: function (value) {
                                                     if (value >= 1000000) return (value / 1000000) + ' Tr';
                                                     if (value >= 1000) return (value / 1000) + ' K';
                                                     return value;
@@ -181,7 +181,7 @@ $(document).ready(function () {
                             });
                         }
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         console.error("Lỗi khi tải dữ liệu biểu đồ:", status, error);
                         console.error(xhr.responseText);
                     }
@@ -189,23 +189,23 @@ $(document).ready(function () {
             }
         }
 
-        // Initial load
+        // Tải dữ liệu biểu đồ lần đầu tiên
         loadChartData();
 
-        // Listen for filter changes
-        $('#chartFilter').on('change', function() {
+        // Lắng nghe sự kiện khi thay đổi bộ lọc thời gian của biểu đồ
+        $('#chartFilter').on('change', function () {
             const filterValue = $(this).val();
             let titleText = 'Biểu đồ doanh thu 7 ngày qua';
             if (filterValue === '1_month') titleText = 'Biểu đồ doanh thu 1 tháng qua';
             else if (filterValue === '1_year') titleText = 'Biểu đồ doanh thu 1 năm qua';
             $('#chartTitle').text(titleText);
-            
+
             loadChartData(filterValue);
         });
     }
 
     // ============================================================
-    // admin-dashboard.html: Load Top Customers Table
+    // admin-dashboard.html: Tải danh sách Khách hàng giá trị cao (Top Customers Table)
     // ============================================================
     if ($('#topCustomersBody').length) {
         $.ajax({
@@ -258,7 +258,7 @@ $(document).ready(function () {
     }
 
     // ============================================================
-    // index.html: Load VIP Leaderboard Cards
+    // index.html: Tải bảng xếp hạng VIP (VIP Leaderboard Cards)
     // ============================================================
     if ($('#vipGrid').length) {
         $.ajax({
@@ -277,17 +277,17 @@ $(document).ready(function () {
                     res.data.forEach(function (c, i) {
                         const rank = i + 1;
                         const gradient = gradients[i] || '';
-                        const topBar = gradient 
-                            ? `<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${gradient}"></div>` 
+                        const topBar = gradient
+                            ? `<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${gradient}"></div>`
                             : '';
-                        const badge = rank <= 3 
+                        const badge = rank <= 3
                             ? `<div class="absolute -bottom-1 -right-1 bg-surface-container-lowest rounded-full p-0.5">
                                     <span class="material-symbols-outlined text-yellow-500 text-sm" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-                               </div>` 
+                               </div>`
                             : '';
                         const avatarUrl = c.avatar_url || '';
-                        const avatarContent = avatarUrl 
-                            ? `<img alt="Profile" class="w-full h-full object-cover" src="${avatarUrl}"/>` 
+                        const avatarContent = avatarUrl
+                            ? `<img alt="Profile" class="w-full h-full object-cover" src="${avatarUrl}"/>`
                             : `<span class="text-h3 font-h3 text-on-surface-variant">${getInitial(c.full_name)}</span>`;
                         const borderClass = rank <= 3 ? 'border-2' : 'border';
                         const spentColor = rank <= 3 ? 'text-primary font-bold' : 'text-on-surface';

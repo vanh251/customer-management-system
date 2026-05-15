@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Top Customers API - GET
-// Returns top customers ranked by total spending (COMPLETED payments)
+// API Khách hàng giá trị cao - Phương thức GET
+// Trả về danh sách khách hàng xếp hạng theo tổng chi tiêu (Các giao dịch Đã Hoàn Thành)
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 

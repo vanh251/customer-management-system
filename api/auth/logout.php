@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Logout API - POST
-// Destroys the current session
+// API Đăng xuất - Phương thức POST
+// Hủy bỏ phiên đăng nhập hiện tại (Session)
 // ============================================================
 session_start();
 session_unset();

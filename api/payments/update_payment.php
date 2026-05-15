@@ -1,4 +1,7 @@
 <?php
+// ============================================================
+// API Cập nhật thông tin thanh toán - Phương thức POST
+// ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
 require_role('ADMIN', 'STAFF');
@@ -14,13 +17,13 @@ if ($order_id <= 0) {
 }
 
 try {
-    // Check if payment record exists
+    // Kiểm tra xem bản ghi thanh toán đã tồn tại chưa
     $stmt = $pdo->prepare("SELECT id FROM payments WHERE order_id = :order_id");
     $stmt->execute([':order_id' => $order_id]);
     $payment = $stmt->fetch();
 
     if ($payment) {
-        // Update existing payment
+        // Cập nhật bản ghi thanh toán hiện có
         $stmt = $pdo->prepare("
             UPDATE payments 
             SET payment_method = :method, status = :status, transaction_id = :tid, updated_at = NOW() 
@@ -33,9 +36,9 @@ try {
             ':order_id' => $order_id
         ]);
     } else {
-        // Create new payment record if it doesn't exist (though usually it should exist with 'PENDING')
-        // In this system, we fetch payments via LEFT JOIN on orders, so it's possible no record exists in `payments` table.
-        // We'll also need the amount, let's get it from orders.
+        // Tạo bản ghi thanh toán mới nếu chưa tồn tại (thường thì phải có sẵn với trạng thái 'PENDING')
+        // Hệ thống này dùng LEFT JOIN nên có thể bảng payments chưa có dòng nào.
+        // Ta cần lấy tổng số tiền (amount) từ bảng orders.
         $stmtOrder = $pdo->prepare("SELECT total_amount FROM orders WHERE id = :id");
         $stmtOrder->execute([':id' => $order_id]);
         $orderData = $stmtOrder->fetch();
@@ -55,8 +58,8 @@ try {
         }
     }
 
-    // Also update order payment status if needed (optional depending on system design)
-    // Here we'll just say success
+    // Cũng có thể cập nhật thêm trạng thái của bảng orders nếu cần thiết tùy vào thiết kế hệ thống
+    // Ở đây trả về thành công là xong
     echo json_encode(['success' => true, 'message' => 'Cập nhật thanh toán thành công.']);
 
 } catch (PDOException $e) {

@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Delete (Deactivate) Staff API - POST
-// Sets staff role to INACTIVE. Admin only.
+// API Vô hiệu hóa nhân viên - Phương thức POST
+// Chuyển quyền và trạng thái của nhân viên thành 'INACTIVE'. Chỉ dành cho Admin.
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
@@ -21,7 +21,7 @@ if ($id <= 0) {
 }
 
 try {
-    // Unassign customers from this staff before deactivating
+    // Gỡ phân công đối với tất cả khách hàng do nhân viên này phụ trách trước khi vô hiệu hóa
     $pdo->prepare("UPDATE users SET assigned_staff_id = NULL WHERE assigned_staff_id = :id")->execute([':id' => $id]);
 
     $stmt = $pdo->prepare("UPDATE users SET role = 'INACTIVE', status = 'INACTIVE' WHERE id = :id AND role = 'STAFF'");

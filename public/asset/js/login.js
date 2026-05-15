@@ -1,9 +1,9 @@
 // ============================================================
-// Login Page - jQuery AJAX
+// Trang Đăng Nhập - Xử lý jQuery AJAX
 // ============================================================
 $(document).ready(function () {
 
-    // Determine the base API path relative to the HTML file
+    // Xác định đường dẫn gốc của API (tương đối so với file HTML)
     const API_BASE = '../../api';
 
     $('#loginForm').on('submit', function (e) {
@@ -14,16 +14,16 @@ $(document).ready(function () {
         const $btn = $(this).find('button[type="submit"]');
         const $error = $('#loginError');
 
-        // Clear previous error
+        // Xóa thông báo lỗi cũ
         $error.addClass('hidden').text('');
 
-        // Validate
+        // Xác thực dữ liệu đầu vào
         if (!email || !password) {
             $error.removeClass('hidden').text('Vui lòng nhập đầy đủ email và mật khẩu.');
             return;
         }
 
-        // Disable button during request
+        // Vô hiệu hóa nút trong quá trình gửi yêu cầu
         $btn.prop('disabled', true).text('Đang đăng nhập...');
 
         $.ajax({
@@ -33,7 +33,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (res) {
                 if (res.success) {
-                    // Show success then redirect
+                    // Hiển thị thông báo thành công sau đó chuyển hướng
                     $error.removeClass('hidden')
                           .removeClass('text-error bg-error-container')
                           .addClass('text-[#065F46] bg-[#D1FAE5]')

@@ -1,5 +1,5 @@
 // ============================================================
-// Staff Management - jQuery AJAX
+// Quản lý nhân viên - Xử lý jQuery AJAX
 // ============================================================
 $(document).ready(function () {
     const API_BASE = '../../api';
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     let allStaff = [];
 
-    // ---- Load Staff List ----
+    // ---- Tải danh sách nhân viên từ API ----
     function loadStaff(search) {
         const params = search ? { search: search } : {};
         $.ajax({
@@ -73,7 +73,7 @@ $(document).ready(function () {
         $('#staffCount').text(data.length + ' nhân viên');
     }
 
-    // ---- Search ----
+    // ---- Xử lý tìm kiếm nhân viên ----
     let searchTimer;
     $('#staffSearch').on('input', function () {
         clearTimeout(searchTimer);
@@ -81,7 +81,7 @@ $(document).ready(function () {
         searchTimer = setTimeout(() => loadStaff(val), 300);
     });
 
-    // ---- Add Staff Modal ----
+    // ---- Xử lý hộp thoại thêm nhân viên ----
     $('#addStaffBtn').on('click', () => { $('#addModal').removeClass('hidden'); $('#addName').focus(); });
     $('#addModalClose, #addModalCancel').on('click', () => $('#addModal').addClass('hidden'));
 
@@ -110,7 +110,7 @@ $(document).ready(function () {
         });
     });
 
-    // ---- Edit Staff Modal ----
+    // ---- Xử lý hộp thoại sửa thông tin nhân viên ----
     $(document).on('click', '.edit-staff-btn', function () {
         const id = $(this).data('id');
         const s = allStaff.find(x => x.id == id);
@@ -148,7 +148,7 @@ $(document).ready(function () {
         });
     });
 
-    // ---- Delete Staff ----
+    // ---- Xóa / Vô hiệu hóa nhân viên ----
     $(document).on('click', '.delete-staff-btn', function () {
         const id = $(this).data('id');
         const name = $(this).data('name');
@@ -165,6 +165,6 @@ $(document).ready(function () {
         });
     });
 
-    // ---- Init ----
+    // ---- Gọi hàm khởi tạo tải dữ liệu ----
     loadStaff();
 });

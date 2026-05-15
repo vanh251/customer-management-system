@@ -179,40 +179,29 @@
 <!-- Main Content Wrapper -->
 <div class="ml-[260px] flex flex-col min-h-screen w-[calc(100%-260px)]">
 <!-- TopNavBar -->
-<header class="sticky top-0 z-40 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between px-8 h-16">
-<!-- Left Area -->
+<header class="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm w-full">
+<div class="flex items-center justify-between px-8 h-16">
+<span class="text-xl font-bold text-slate-900 dark:text-white">Quản Lý Khách Hàng</span>
+<!-- Trailing Actions -->
 <div class="flex items-center gap-4">
-<span class="hidden md:block text-xl font-bold text-slate-900 dark:text-white font-h2 text-h2">Bảng Điều Khiển</span>
-</div>
-<!-- Right Area: Actions & Profile -->
-<div class="flex items-center gap-6">
-<!-- Search -->
-<button class="text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors p-2 cursor-pointer active:opacity-70">
-<span class="material-symbols-outlined" data-icon="search">search</span>
-</button>
-<!-- Nút chuyển sang trang chính -->
-<a href="index.html" class="text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors p-2 cursor-pointer active:opacity-70" title="Trang chủ">
-<span class="material-symbols-outlined" data-icon="home">home</span>
+<a href="index.html" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70" title="Trang chủ">
+<span class="material-symbols-outlined">home</span>
 </a>
-<div class="h-6 w-px bg-slate-200 dark:bg-slate-800"></div>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
 <!-- Admin Profile -->
 <div class="relative" id="adminProfileContainer">
-<button class="flex items-center gap-3 text-[#0F172A] dark:text-slate-100 font-['Inter'] text-sm tracking-tight cursor-pointer active:opacity-70 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors p-1 pr-3" id="adminProfileBtn">
-<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
-<span class="font-label-sm text-label-sm text-on-primary-container auth-user-avatar-text">QT</span>
-<img src="" class="auth-user-avatar-img hidden w-full h-full object-cover" />
-</div>
-<span class="font-label-md text-label-md auth-user-name">Quản trị viên</span>
-<span class="material-symbols-outlined text-sm text-slate-500" data-icon="expand_more">expand_more</span>
+<button class="flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70 p-1.5 pr-3" id="adminProfileBtn">
+<img src="" class="auth-user-avatar-img hidden w-8 h-8 rounded-full object-cover border border-slate-200" />
+<span class="auth-user-avatar-text hidden w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm"></span>
+<span class="font-medium text-sm text-slate-900 dark:text-white auth-user-name">Quản trị viên</span>
+<span class="material-symbols-outlined text-sm text-slate-400">expand_more</span>
 </button>
 <!-- Admin Profile Popup -->
 <div id="adminProfilePopup">
 <div class="p-5 bg-gradient-to-br from-slate-50 to-white border-b border-slate-100">
     <div class="flex items-center gap-3 mb-3">
-        <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center border-2 border-slate-200 overflow-hidden">
-            <span class="font-label-md text-label-md text-on-primary-container auth-user-avatar-text">QT</span>
-            <img src="" class="auth-user-avatar-img hidden w-full h-full object-cover" />
-        </div>
+        <img src="" class="auth-user-avatar-img hidden w-12 h-12 rounded-full object-cover border-2 border-slate-200" />
+        <span class="auth-user-avatar-text hidden w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg"></span>
         <div>
             <p class="font-semibold text-sm text-slate-900 auth-user-name">Quản trị viên</p>
             <p class="text-xs text-slate-500 auth-user-email">admin@commercesuite.com</p>

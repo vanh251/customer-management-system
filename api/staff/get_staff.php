@@ -1,8 +1,8 @@
 <?php
 // ============================================================
-// Get Staff API - GET
-// Returns all users with role='STAFF', with assigned customer count
-// Admin only
+// API Lấy danh sách nhân viên - Phương thức GET
+// Lấy danh sách tất cả người dùng có vai trò là 'STAFF', kèm theo số lượng khách hàng họ đang quản lý
+// Chỉ dành cho Admin
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';

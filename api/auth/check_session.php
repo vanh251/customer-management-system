@@ -1,6 +1,6 @@
 <?php
 // ============================================================
-// Session Guard - Include this in all admin API endpoints
+// Bảo vệ phiên đăng nhập (Session Guard) - Bao gồm file này ở mọi API cần bảo mật
 // ============================================================
 if (!isset($_SESSION['admin_id'])) {
     http_response_code(401);

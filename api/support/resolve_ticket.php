@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Resolve Ticket API - POST
-// Updates ticket status to RESOLVED
+// API Đánh dấu đã giải quyết yêu cầu - Phương thức POST
+// Cập nhật trạng thái của ticket thành 'RESOLVED' (Đã giải quyết)
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
@@ -25,7 +25,7 @@ try {
     $stmt->execute([':id' => $ticketId]);
 
     if ($stmt->rowCount() > 0) {
-        // Also update all replies' status
+        // Cập nhật trạng thái của tất cả các phản hồi liên quan thành 'RESOLVED'
         $stmt2 = $pdo->prepare("UPDATE support_tickets SET status = 'RESOLVED' WHERE parent_id = :parent_id");
         $stmt2->execute([':parent_id' => $ticketId]);
 

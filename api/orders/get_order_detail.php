@@ -1,6 +1,6 @@
 <?php
 // ============================================================
-// Get Order Details API - GET
+// API Lấy chi tiết đơn hàng - Phương thức GET
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
@@ -14,7 +14,7 @@ if ($order_id <= 0) {
 }
 
 try {
-    // 1. Get Order Info
+    // 1. Lấy thông tin chung của đơn hàng
     $stmt = $pdo->prepare("
         SELECT o.*, p.status as payment_status,
                u.full_name as customer_name, u.email as customer_email, u.phone as customer_phone, u.address as customer_address
@@ -31,7 +31,7 @@ try {
         exit;
     }
 
-    // 2. Get Order Items
+    // 2. Lấy danh sách sản phẩm trong đơn hàng
     $stmt = $pdo->prepare("
         SELECT oi.*, p.name as product_name, p.image_url
         FROM order_details oi

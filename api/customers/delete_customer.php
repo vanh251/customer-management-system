@@ -13,10 +13,9 @@ if ($id <= 0) {
 }
 
 try {
-    // Để an toàn, chúng ta nên kiểm tra xem khách hàng có đơn hàng nào không.
-    // Nếu có, hệ thống có thể từ chối xóa hoặc thực hiện soft delete.
-    // Tạm thời sẽ dùng soft delete (vô hiệu hóa) hoặc xóa hẳn nếu không vướng khóa ngoại.
-    // BTL3 schema thường có CASCADE hoặc RESTRICT.
+    // Để an toàn, hệ thống sẽ kiểm tra xem khách hàng có đơn hàng nào không.
+    // Nếu có, dùng lệnh DELETE có thể sẽ bị khóa ngoại (Foreign Key) cản lại.
+    // Tạm thời nếu DB cấu hình RESTRICT thì sẽ bắt lỗi PDOException.
     
     // Kiểm tra xem khách hàng có tồn tại không
     $stmt = $pdo->prepare("SELECT id, role FROM users WHERE id = :id AND role = 'USER'");
@@ -28,9 +27,8 @@ try {
         exit;
     }
 
-    // Thực hiện xóa
-    // Do cấu trúc có thể có bảng orders phụ thuộc vào users, dùng DELETE có thể gây lỗi ngoại lệ
-    // Nếu db hỗ trợ ON DELETE CASCADE thì OK. Nếu không, ta bắt lỗi và báo.
+    // Thực hiện xóa từ cơ sở dữ liệu
+    // Nếu có ràng buộc khóa ngoại (ví dụ: đã có đơn hàng), lệnh này sẽ quăng lỗi 23000
     $stmt = $pdo->prepare("DELETE FROM users WHERE id = :id AND role = 'USER'");
     $stmt->execute([':id' => $id]);
 

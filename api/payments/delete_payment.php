@@ -1,7 +1,9 @@
-<?php
+// ============================================================
+// API Xóa thanh toán - Phương thức POST
+// ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
-require_role('ADMIN'); // Only Admin can delete
+require_role('ADMIN'); // Chỉ Admin mới có quyền xóa
 
 $order_id = intval($_POST['id'] ?? 0);
 
@@ -11,7 +13,7 @@ if ($order_id <= 0) {
 }
 
 try {
-    // We only delete the payment record, keeping the order for history
+    // Chúng ta chỉ xóa bản ghi thanh toán, giữ lại đơn hàng để làm lịch sử
     $stmt = $pdo->prepare("DELETE FROM payments WHERE order_id = :id");
     $stmt->execute([':id' => $order_id]);
 

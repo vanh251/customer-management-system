@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Update Staff API - POST
-// Updates staff info. Admin only.
+// API Cập nhật thông tin nhân viên - Phương thức POST
+// Chỉ dành cho Admin.
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
@@ -25,7 +25,7 @@ if ($id <= 0 || empty($full_name) || empty($email)) {
 }
 
 try {
-    // Check email uniqueness (exclude current user)
+    // Kiểm tra xem email có trùng với nhân viên khác hay không
     $check = $pdo->prepare("SELECT id FROM users WHERE email = :email AND id != :id LIMIT 1");
     $check->execute([':email' => $email, ':id' => $id]);
     if ($check->fetch()) {

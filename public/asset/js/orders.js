@@ -105,7 +105,7 @@ $(document).ready(function () {
         }
     }
 
-    // Filter Listeners
+    // Lắng nghe sự kiện khi thay đổi bộ lọc (Tìm kiếm & Trạng thái)
     let searchTimeout;
     $('#orderSearch').on('input', function() {
         clearTimeout(searchTimeout);
@@ -113,7 +113,7 @@ $(document).ready(function () {
     });
     $('#filterStatus').on('change', loadOrders);
 
-    // View Details
+    // Hiển thị chi tiết một đơn hàng cụ thể
     $(document).on('click', '.btn-view', function() {
         currentOrderId = $(this).data('id');
         loadOrderDetail(currentOrderId);
@@ -164,7 +164,7 @@ $(document).ready(function () {
 
         $('#orderDetailContent').html(`
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Customer Info -->
+                <!-- Thông tin khách hàng -->
                 <div class="bg-surface-container p-4 rounded-lg border border-outline-variant">
                     <h4 class="text-sm font-bold text-on-surface mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-sm">person</span> Khách Hàng</h4>
                     <p class="text-sm text-on-surface-variant mb-1"><span class="font-medium text-on-surface">Tên:</span> ${escapeHTML(data.customer_name)}</p>
@@ -172,7 +172,7 @@ $(document).ready(function () {
                     <p class="text-sm text-on-surface-variant mb-1"><span class="font-medium text-on-surface">Email:</span> ${escapeHTML(data.customer_email)}</p>
                     <p class="text-sm text-on-surface-variant"><span class="font-medium text-on-surface">Địa chỉ:</span> ${escapeHTML(data.customer_address)}</p>
                 </div>
-                <!-- Order Info -->
+                <!-- Thông tin đơn hàng -->
                 <div class="bg-surface-container p-4 rounded-lg border border-outline-variant">
                     <h4 class="text-sm font-bold text-on-surface mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-sm">receipt_long</span> Thông Tin</h4>
                     <p class="text-sm text-on-surface-variant mb-1"><span class="font-medium text-on-surface">Ngày tạo:</span> ${formatDate(data.created_at)}</p>
@@ -182,7 +182,7 @@ $(document).ready(function () {
                 </div>
             </div>
             
-            <!-- Items -->
+            <!-- Danh sách sản phẩm -->
             <div>
                 <h4 class="text-sm font-bold text-on-surface mb-3">Sản Phẩm</h4>
                 <div class="border border-outline-variant rounded-lg px-4">
@@ -192,7 +192,7 @@ $(document).ready(function () {
         `);
     }
 
-    // Modal Controls
+    // Điều khiển hộp thoại (Modal)
     $('#closeDetailModalBtn, #closeDetailModalBtn2').on('click', function() {
         $('#orderDetailModal').addClass('hidden');
     });
@@ -215,7 +215,7 @@ $(document).ready(function () {
         });
     });
 
-    // (User info is now loaded dynamically by auth_guard.js)
+    // (Thông tin người dùng hiện được tải tự động qua auth_guard.js)
 
     loadOrders();
 });

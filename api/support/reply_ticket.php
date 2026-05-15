@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Reply Ticket API - POST
-// Admin replies to a support ticket
+// API Phản hồi yêu cầu hỗ trợ - Phương thức POST
+// Quản trị viên/Nhân viên gửi tin nhắn phản hồi cho khách hàng
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
@@ -22,7 +22,7 @@ if ($ticketId <= 0 || empty($message)) {
 }
 
 try {
-    // Verify parent ticket exists
+    // Xác minh yêu cầu gốc có tồn tại không
     $stmt = $pdo->prepare("SELECT id, subject, order_id FROM support_tickets WHERE id = :id AND parent_id IS NULL");
     $stmt->execute([':id' => $ticketId]);
     $parentTicket = $stmt->fetch();
@@ -32,7 +32,7 @@ try {
         exit;
     }
 
-    // Insert admin reply
+    // Thêm tin nhắn phản hồi của quản trị viên vào cơ sở dữ liệu
     $stmt = $pdo->prepare("
         INSERT INTO support_tickets (parent_id, user_id, order_id, subject, message, is_admin_reply, status, created_at)
         VALUES (:parent_id, :user_id, :order_id, :subject, :message, 1, 'OPEN', NOW())

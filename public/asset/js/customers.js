@@ -4,6 +4,7 @@ $(document).ready(function () {
     let currentPage = 1;
     const limit = 10;
     
+    // ---- Hàm hỗ trợ: Mã hóa HTML để tránh XSS ----
     function escapeHTML(str) {
         if (!str) return '';
         return String(str)
@@ -14,12 +15,14 @@ $(document).ready(function () {
             .replace(/'/g, "&#039;");
     }
 
+    // ---- Hàm hỗ trợ: Định dạng ngày tháng ----
     function formatDate(dateStr) {
         if (!dateStr) return '-';
         const d = new Date(dateStr);
         return d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
     }
 
+    // Gọi API để tải danh sách khách hàng dựa trên tìm kiếm và bộ lọc
     function loadCustomers(search = '', tier = '', group = '', status = '') {
         $.ajax({
             url: `${API_BASE}/customers/get_customers.php`,
@@ -45,6 +48,7 @@ $(document).ready(function () {
         });
     }
 
+    // Hiển thị danh sách khách hàng ra bảng HTML
     function renderTable() {
         const tbody = $('#customerTableBody');
         tbody.empty();
@@ -120,6 +124,7 @@ $(document).ready(function () {
         renderPagination(totalItems, totalPages, startIndex, endIndex);
     }
 
+    // Hiển thị và xử lý phân trang cho bảng khách hàng
     function renderPagination(totalItems, totalPages, startIndex, endIndex) {
         if (totalItems === 0) {
             $('#paginationInfo').text(`Hiển thị 0 đến 0 của 0 mục`);
@@ -165,12 +170,14 @@ $(document).ready(function () {
         controls.append(btnNext);
     }
 
-    // Filters
+    // ============================================================
+    // Bộ lọc và Tìm kiếm (Filters & Search)
+    // ============================================================
     function applyFilters() {
         const search = $('#customerSearch').val();
         const tier = $('#filterTier').val();
         const status = $('#filterStatus').val();
-        // optionally add group if needed later
+        // Có thể thêm phân loại theo nhóm (group) nếu cần thiết sau này
         loadCustomers(search, tier, '', status);
     }
 
@@ -182,7 +189,9 @@ $(document).ready(function () {
 
     $('#filterTier, #filterStatus').on('change', applyFilters);
 
-    // Modals
+    // ============================================================
+    // Xử lý các hộp thoại (Modals)
+    // ============================================================
     $('#addCustomerBtn').on('click', function () {
         $('#addForm')[0].reset();
         $('#addModal').removeClass('hidden');
@@ -196,7 +205,7 @@ $(document).ready(function () {
         $('#editModal').addClass('hidden');
     });
 
-    // Add submit
+    // Xử lý Gửi form Thêm mới khách hàng
     $('#addForm').on('submit', function (e) {
         e.preventDefault();
         const data = {
@@ -232,7 +241,7 @@ $(document).ready(function () {
         });
     });
 
-    // Edit open
+    // Mở hộp thoại Chỉnh sửa khách hàng và điền dữ liệu cũ
     $(document).on('click', '.btn-edit', function () {
         const c = $(this).data('customer');
         $('#editId').val(c.id);
@@ -250,7 +259,7 @@ $(document).ready(function () {
         $('#editModal').removeClass('hidden');
     });
 
-    // Edit submit
+    // Xử lý Gửi form Chỉnh sửa khách hàng
     $('#editForm').on('submit', function (e) {
         e.preventDefault();
         const data = {
@@ -286,7 +295,7 @@ $(document).ready(function () {
         });
     });
 
-    // Delete customer
+    // Xóa khách hàng
     $(document).on('click', '.btn-delete', function() {
         const id = $(this).data('id');
         const name = $(this).data('name');
@@ -316,7 +325,9 @@ $(document).ready(function () {
         }
     });
 
-    // Timeline features
+    // ============================================================
+    // Tính năng Lịch sử tương tác (Timeline features)
+    // ============================================================
     function loadTimeline(customerId) {
         $.ajax({
             url: `${API_BASE}/customers/get_activities.php`,
@@ -408,6 +419,6 @@ $(document).ready(function () {
         });
     });
 
-    // Initial load
+    // Gọi hàm khởi tạo để tải dữ liệu khi trang vừa mở
     loadCustomers();
 });

@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Add Customer Activity - POST
-// Logs an interaction (call, meeting, email, note) with a customer
+// API Thêm hoạt động khách hàng - Phương thức POST
+// Lưu lại lịch sử tương tác (gọi điện, họp, email, ghi chú) với khách hàng
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';

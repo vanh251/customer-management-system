@@ -1,8 +1,8 @@
 <?php
 // ============================================================
-// Role-Based Access Control Middleware
-// Usage: require_role('ADMIN');
-//        require_role('ADMIN', 'STAFF');
+// Middleware kiểm tra quyền truy cập dựa trên vai trò (Role-Based Access Control)
+// Cách dùng: require_role('ADMIN'); 
+//            require_role('ADMIN', 'STAFF');
 // ============================================================
 
 function require_role(...$roles) {

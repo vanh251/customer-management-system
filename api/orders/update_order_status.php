@@ -1,6 +1,6 @@
 <?php
 // ============================================================
-// Update Order Status API - POST
+// API Cập nhật trạng thái đơn hàng - Phương thức POST
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';

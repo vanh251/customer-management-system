@@ -1,6 +1,6 @@
 <?php
 // ============================================================
-// Login API - POST: email, password
+// API Đăng nhập - Phương thức POST: email, password
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $email    = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
 
-// Validate input
+// Xác thực dữ liệu đầu vào
 if (empty($email) || empty($password)) {
     echo json_encode(['success' => false, 'message' => 'Vui lòng nhập đầy đủ email và mật khẩu.']);
     exit;
@@ -29,13 +29,13 @@ try {
         exit;
     }
 
-    // Verify password
+    // Kiểm tra mật khẩu (hash)
     if (!password_verify($password, $admin['password'])) {
         echo json_encode(['success' => false, 'message' => 'Mật khẩu không chính xác.']);
         exit;
     }
 
-    // Set session
+    // Lưu thông tin vào Session
     $_SESSION['admin_id']     = $admin['id'];
     $_SESSION['admin_name']   = $admin['full_name'];
     $_SESSION['admin_email']  = $admin['email'];

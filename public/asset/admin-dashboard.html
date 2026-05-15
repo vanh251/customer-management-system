@@ -182,23 +182,15 @@
 </div>
 </aside>
 <!-- TopNavBar -->
-<header class="sticky top-0 z-40 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm text-[#0F172A] dark:text-slate-100 font-['Inter'] text-sm tracking-tight">
-<div class="flex items-center justify-between px-8 h-16 ml-[260px]">
-<!-- Search Bar (on_left) -->
-<div class="flex items-center gap-4 flex-1">
-<span class="hidden md:block text-xl font-bold text-slate-900 dark:text-white">Bảng Điều Khiển</span>
-<div class="hidden md:flex items-center ml-8 px-3 py-2 bg-slate-50 dark:bg-slate-800 rounded-DEFAULT border border-slate-200 dark:border-slate-700 focus-within:border-primary w-96 transition-colors">
-<span class="material-symbols-outlined text-slate-400 mr-2 text-lg">search</span>
-<input class="bg-transparent border-none outline-none focus:ring-0 text-sm w-full placeholder-slate-400 text-[#0F172A] dark:text-slate-100" placeholder="Tìm kiếm..." type="text"/>
-</div>
-</div>
+<header class="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm ml-[260px]" style="width:calc(100% - 260px);">
+<div class="flex items-center justify-between px-8 h-16">
+<span class="text-xl font-bold text-slate-900 dark:text-white">Bảng Điều Khiển</span>
 <!-- Trailing Actions -->
 <div class="flex items-center gap-4">
-<!-- Nút chuyển sang trang chính (thay thế nút thông báo) -->
-<a href="index.html" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70 relative" title="Trang chủ">
+<a href="index.html" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70" title="Trang chủ">
 <span class="material-symbols-outlined">home</span>
 </a>
-<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
 <!-- Admin Profile Button with Popup -->
 <div class="relative" id="adminProfileContainer">
 <button class="flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-md transition-colors cursor-pointer active:opacity-70 p-1.5 pr-3" id="adminProfileBtn">

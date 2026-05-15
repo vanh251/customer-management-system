@@ -1,5 +1,5 @@
 // ============================================================
-// Support / Customer Care - jQuery AJAX
+// Hỗ trợ / Chăm sóc khách hàng - Xử lý jQuery AJAX
 // ============================================================
 $(document).ready(function () {
     const API_BASE = '../../api';
@@ -34,7 +34,7 @@ $(document).ready(function () {
     }
 
     // ============================================================
-    // Load Ticket List (left panel)
+    // Tải danh sách yêu cầu hỗ trợ (Ticket List) ở khung bên trái
     // ============================================================
     function loadTickets() {
         $.ajax({
@@ -61,7 +61,7 @@ $(document).ready(function () {
                     html += '<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 pr-4 leading-relaxed">'+escapeHTML(t.message||'')+'</p></div>';
                 });
                 $('#ticketList').html(html);
-                // Auto-select first ticket if none selected
+                // Tự động chọn yêu cầu đầu tiên nếu chưa có yêu cầu nào được chọn
                 if (!currentTicketId && res.data.length > 0) {
                     currentTicketId = res.data[0].id;
                     loadConversation(currentTicketId);
@@ -72,7 +72,7 @@ $(document).ready(function () {
     }
 
     // ============================================================
-    // Load Conversation (right panel)
+    // Tải chi tiết cuộc trò chuyện (Conversation) ở khung bên phải
     // ============================================================
     function loadConversation(ticketId) {
         currentTicketId = ticketId;
@@ -83,37 +83,37 @@ $(document).ready(function () {
                 if (!res.success) return;
                 const t = res.data.ticket;
                 const replies = res.data.replies;
-                // Update header
+                // Cập nhật thông tin tiêu đề (Header) của cuộc trò chuyện
                 const avatarImg = t.avatar_url 
                     ? '<img alt="" class="w-full h-full object-cover" src="'+t.avatar_url+'"/>' 
                     : '<span class="font-label-md">'+getInitial(t.full_name)+'</span>';
                 $('#convoHeaderAvatar').html(avatarImg);
                 $('#convoHeaderName').text(t.full_name);
                 $('#convoHeaderEmail').html('<span class="material-symbols-outlined text-[16px]">mail</span> '+escapeHTML(t.email));
-                // Update resolve button
+                // Cập nhật trạng thái của nút Đánh dấu đã giải quyết
                 if (t.status === 'RESOLVED') {
                     $('#resolveBtn').text('Đã giải quyết').prop('disabled', true).addClass('opacity-50');
                 } else {
                     $('#resolveBtn').text('Đánh dấu đã giải quyết').prop('disabled', false).removeClass('opacity-50');
                 }
-                // Build chat
+                // Xây dựng giao diện danh sách tin nhắn (Chat)
                 let chatHtml = '';
-                // Date separator
+                // Dấu phân cách thời gian (Ngày)
                 chatHtml += '<div class="flex items-center justify-center"><span class="px-3 py-1 bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface-variant border border-outline-variant">Hôm nay</span></div>';
-                // Main ticket message (customer)
+                // Tin nhắn yêu cầu gốc (của khách hàng)
                 chatHtml += buildBubble(t, false);
-                // Replies
+                // Danh sách các câu trả lời
                 replies.forEach(function (r) {
                     chatHtml += buildBubble(r, r.is_admin_reply == 1);
                 });
                 $('#chatCanvas').html(chatHtml);
-                // Scroll to bottom
+                // Cuộn xuống cuối cùng của khung trò chuyện
                 const canvas = document.getElementById('chatCanvas');
                 if (canvas) canvas.scrollTop = canvas.scrollHeight;
-                // Highlight active ticket in list
+                // Làm nổi bật yêu cầu hiện tại đang chọn trong danh sách bên trái
                 $('.ticket-item').removeClass('bg-primary-fixed border-l-primary').addClass('bg-surface-container-lowest border-l-transparent');
                 $('.ticket-item[data-id="'+ticketId+'"]').removeClass('bg-surface-container-lowest border-l-transparent').addClass('bg-primary-fixed border-l-primary');
-                // Update placeholder
+                // Cập nhật chữ mờ (placeholder) ở ô nhập tin nhắn
                 $('#replyMessage').attr('placeholder', 'Nhập câu trả lời cho ' + t.full_name + '...');
             }
         });
@@ -141,14 +141,14 @@ $(document).ready(function () {
     }
 
     // ============================================================
-    // Click on ticket
+    // Xử lý sự kiện click vào một yêu cầu trong danh sách
     // ============================================================
     $(document).on('click', '.ticket-item', function () {
         loadConversation($(this).data('id'));
     });
 
     // ============================================================
-    // Send Reply
+    // Gửi tin nhắn phản hồi
     // ============================================================
     $('#sendReplyBtn').on('click', sendReply);
     $('#replyMessage').on('keydown', function(e) {
@@ -166,7 +166,7 @@ $(document).ready(function () {
             success: function (res) {
                 if (res.success) {
                     $('#replyMessage').val('');
-                    // Append new bubble without full reload
+                    // Thêm bóng chat mới vào giao diện mà không cần tải lại toàn bộ cuộc trò chuyện
                     const bubble = buildBubble(res.data, true);
                     $('#chatCanvas').append(bubble);
                     const canvas = document.getElementById('chatCanvas');
@@ -177,7 +177,7 @@ $(document).ready(function () {
     }
 
     // ============================================================
-    // Resolve Ticket
+    // Đánh dấu yêu cầu đã được giải quyết
     // ============================================================
     $('#resolveBtn').on('click', function () {
         if (!currentTicketId) return;
@@ -197,7 +197,7 @@ $(document).ready(function () {
     });
 
     // ============================================================
-    // Initial Load
+    // Khởi tạo tải dữ liệu lần đầu tiên
     // ============================================================
     loadTickets();
 });

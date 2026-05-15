@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Get Customers API - GET
-// Returns all users with role='USER', supports search
+// API Lấy danh sách khách hàng - Phương thức GET
+// Trả về tất cả người dùng có vai trò là 'USER', có hỗ trợ tìm kiếm và lọc
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';

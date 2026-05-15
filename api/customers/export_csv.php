@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Export Customers CSV - GET
-// Exports customer list to CSV file download
+// API Xuất file CSV danh sách khách hàng - Phương thức GET
+// Trả về file CSV để tải xuống trực tiếp
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
@@ -21,15 +21,15 @@ try {
     $stmt = $pdo->query($sql);
     $customers = $stmt->fetchAll();
 
-    // Set CSV headers
+    // Cài đặt Headers HTTP để ép trình duyệt tải file CSV về
     header('Content-Type: text/csv; charset=utf-8');
     header('Content-Disposition: attachment; filename="khach_hang_' . date('Y-m-d') . '.csv"');
 
     $output = fopen('php://output', 'w');
-    // BOM for Excel UTF-8
+    // Thêm ký tự BOM (Byte Order Mark) để Excel có thể đọc tiếng Việt có dấu (UTF-8)
     fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
 
-    // Header row
+    // Ghi hàng đầu tiên (Tiêu đề các cột)
     fputcsv($output, ['ID', 'Họ tên', 'Email', 'SĐT', 'Địa chỉ', 'Sinh nhật', 'Nguồn', 'Nhóm', 'Hạng', 'Giảm giá (%)', 'Tags', 'Trạng thái', 'Người phụ trách', 'Ngày tạo']);
 
     foreach ($customers as $c) {

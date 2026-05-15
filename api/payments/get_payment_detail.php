@@ -1,4 +1,7 @@
 <?php
+// ============================================================
+// API Lấy chi tiết thanh toán - Phương thức GET
+// ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
 require_role('ADMIN', 'STAFF');

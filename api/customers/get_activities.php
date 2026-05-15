@@ -1,7 +1,7 @@
 <?php
 // ============================================================
-// Get Customer Activities (Timeline) - GET
-// Returns activity history for a specific customer
+// API Lấy lịch sử tương tác (Timeline) - Phương thức GET
+// Trả về danh sách các tương tác của một khách hàng cụ thể
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';

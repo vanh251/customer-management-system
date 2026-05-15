@@ -1,6 +1,6 @@
 <?php
 // ============================================================
-// Get Chart Data API - GET
+// API Lấy dữ liệu biểu đồ - Phương thức GET
 // ============================================================
 require_once __DIR__ . '/../../config/db_connect.php';
 require_once __DIR__ . '/../auth/check_role.php';
