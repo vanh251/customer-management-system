@@ -94,27 +94,6 @@ CREATE TABLE IF NOT EXISTS payments (
     FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ============================================================
--- 6. BẢNG SUPPORT_TICKETS - Vé hỗ trợ khách hàng
--- parent_id = NULL → ticket chính
--- parent_id = INT  → phản hồi (reply) của ticket
--- is_admin_reply = 0 → khách hàng gửi
--- is_admin_reply = 1 → admin trả lời
--- ============================================================
-CREATE TABLE IF NOT EXISTS support_tickets (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    parent_id INT DEFAULT NULL,
-    user_id INT NOT NULL,
-    order_id INT DEFAULT NULL,
-    subject VARCHAR(255) DEFAULT NULL,
-    message TEXT NOT NULL,
-    is_admin_reply TINYINT(1) DEFAULT 0,
-    status ENUM('OPEN', 'IN_PROGRESS', 'RESOLVED') DEFAULT 'OPEN',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE SET NULL,
-    FOREIGN KEY (parent_id) REFERENCES support_tickets(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
 -- 7. BẢNG CUSTOMER_ACTIVITIES - Lịch sử tương tác
@@ -144,8 +123,6 @@ CREATE INDEX idx_orders_status ON orders(status);
 CREATE INDEX idx_payments_order_id ON payments(order_id);
 CREATE INDEX idx_payments_status ON payments(status);
 CREATE INDEX idx_order_details_order_id ON order_details(order_id);
-CREATE INDEX idx_support_tickets_parent_id ON support_tickets(parent_id);
-CREATE INDEX idx_support_tickets_user_id ON support_tickets(user_id);
-CREATE INDEX idx_support_tickets_status ON support_tickets(status);
+
 CREATE INDEX idx_activities_customer ON customer_activities(customer_id);
 CREATE INDEX idx_activities_staff ON customer_activities(staff_id);

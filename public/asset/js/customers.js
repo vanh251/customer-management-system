@@ -102,9 +102,6 @@ $(document).ready(function () {
                         <td class="py-3 px-4 font-body-sm text-body-sm text-on-surface-variant text-right">${formatDate(c.created_at)}</td>
                         <td class="py-3 px-4 text-center">
                             <div class="flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button class="p-1.5 text-primary hover:bg-primary-container rounded-DEFAULT transition-colors btn-timeline" data-id="${c.id}" title="Lịch sử tương tác">
-                                    <span class="material-symbols-outlined text-sm">history</span>
-                                </button>
                                 <button class="p-1.5 text-secondary hover:bg-surface-variant rounded-DEFAULT transition-colors btn-edit" data-id="${c.id}" title="Chỉnh sửa">
                                     <span class="material-symbols-outlined text-sm">edit</span>
                                 </button>
@@ -323,100 +320,6 @@ $(document).ready(function () {
                 }
             });
         }
-    });
-
-    // ============================================================
-    // Tính năng Lịch sử tương tác (Timeline features)
-    // ============================================================
-    function loadTimeline(customerId) {
-        $.ajax({
-            url: `${API_BASE}/customers/get_activities.php`,
-            type: 'GET',
-            data: { customer_id: customerId },
-            dataType: 'json',
-            success: function (res) {
-                if (res.success) {
-                    renderTimeline(res.data);
-                } else {
-                    alert('Lỗi tải lịch sử tương tác.');
-                }
-            }
-        });
-    }
-
-    function renderTimeline(activities) {
-        const list = $('#timelineList');
-        list.empty();
-        
-        if (activities.length === 0) {
-            list.html('<p class="text-sm text-secondary ml-4">Chưa có lịch sử tương tác.</p>');
-            return;
-        }
-
-        activities.forEach(a => {
-            let icon = 'info';
-            let color = 'bg-surface-variant text-on-surface-variant';
-            
-            if (a.type === 'CALL') { icon = 'call'; color = 'bg-primary-container text-on-primary-container'; }
-            else if (a.type === 'MEETING') { icon = 'groups'; color = 'bg-[#FEF08A] text-[#854D0E]'; }
-            else if (a.type === 'EMAIL') { icon = 'mail'; color = 'bg-[#E0E7FF] text-[#3730A3]'; }
-            else if (a.type === 'NOTE') { icon = 'sticky_note_2'; color = 'bg-secondary-container text-on-secondary-container'; }
-
-            const item = $(`
-                <div class="relative pl-6">
-                    <span class="absolute -left-4 top-1 w-8 h-8 rounded-full flex items-center justify-center border-4 border-surface-container-lowest ${color}">
-                        <span class="material-symbols-outlined text-sm">${icon}</span>
-                    </span>
-                    <div class="bg-surface-container-low rounded-lg p-3">
-                        <div class="flex justify-between items-start mb-1">
-                            <h4 class="font-label-md text-label-md text-on-surface font-semibold">${escapeHTML(a.title)}</h4>
-                            <span class="text-xs text-secondary whitespace-nowrap ml-2">${formatDate(a.created_at)}</span>
-                        </div>
-                        <p class="font-body-sm text-body-sm text-on-surface-variant mb-2">${escapeHTML(a.description || '')}</p>
-                        <p class="text-xs text-secondary font-medium">Bởi: ${escapeHTML(a.staff_name)}</p>
-                    </div>
-                </div>
-            `);
-            list.append(item);
-        });
-    }
-
-    $(document).on('click', '.btn-timeline', function() {
-        const id = $(this).data('id');
-        $('#timelineCustomerId').val(id);
-        $('#timelineOverlay').removeClass('hidden');
-        setTimeout(() => $('#timelinePanel').removeClass('translate-x-full'), 10);
-        loadTimeline(id);
-    });
-
-    $('#closeTimelineBtn, #timelineOverlay').on('click', function() {
-        $('#timelinePanel').addClass('translate-x-full');
-        setTimeout(() => $('#timelineOverlay').addClass('hidden'), 300);
-    });
-
-    $('#addActivityForm').on('submit', function(e) {
-        e.preventDefault();
-        const cid = $('#timelineCustomerId').val();
-        
-        $.ajax({
-            url: `${API_BASE}/customers/add_activity.php`,
-            type: 'POST',
-            data: {
-                customer_id: cid,
-                type: $('#activityType').val(),
-                title: $('#activityTitle').val().trim(),
-                description: $('#activityDesc').val().trim()
-            },
-            dataType: 'json',
-            success: function (res) {
-                if (res.success) {
-                    $('#addActivityForm')[0].reset();
-                    loadTimeline(cid);
-                } else {
-                    alert(res.message);
-                }
-            }
-        });
     });
 
     // Gọi hàm khởi tạo để tải dữ liệu khi trang vừa mở

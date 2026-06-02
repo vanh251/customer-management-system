@@ -75,9 +75,6 @@ $(document).ready(function () {
 
                     $('#stat-orders').text(new Intl.NumberFormat('vi-VN').format(d.new_orders.value));
                     renderGrowth('stat-orders', d.new_orders.growth);
-
-                    $('#stat-tickets').text(new Intl.NumberFormat('vi-VN').format(d.open_tickets.value));
-                    // Số lượng ticket đang mở không cần hiển thị % tăng trưởng
                 }
             },
             error: function (xhr) {

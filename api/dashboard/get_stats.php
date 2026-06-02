@@ -43,9 +43,7 @@ try {
 
     $ordersGrowth = calcGrowth($ordersThisMonth, $ordersLastMonth);
 
-    // 4. Số lượng Yêu cầu hỗ trợ (All time open) - giữ lại chỉ số này để cho Staff xử lý
-    $stmt = $pdo->query("SELECT COUNT(*) as count FROM support_tickets WHERE parent_id IS NULL AND status != 'RESOLVED'");
-    $openTickets = (int) $stmt->fetch()['count'];
+
 
     echo json_encode([
         'success' => true,
@@ -61,10 +59,6 @@ try {
             'new_orders' => [
                 'value'  => $ordersThisMonth,
                 'growth' => $ordersGrowth
-            ],
-            'open_tickets' => [
-                'value' => $openTickets,
-                'growth' => 0 // Not tracking growth for open tickets
             ]
         ]
     ]);
